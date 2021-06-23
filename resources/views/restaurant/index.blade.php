@@ -1,8 +1,8 @@
 <x-guest-layout>
-    <h1 class="text-xl">Restaurants</h1>
+    <h1 class="text-3xl m-3">Restaurants</h1>
     @forelse ($restaurants as $restaurant)
-        <div>
-            <h2>{{ $restaurant->name }}</h2>
+        <div class="ml-5 mt-5 max-w-xl">
+            <h2 class="font-bold">{{ $restaurant->name }}</h2>
             <p>{{ $restaurant->description }}</p>
         </div>
     @empty
