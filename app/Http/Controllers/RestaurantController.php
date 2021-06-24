@@ -71,7 +71,8 @@ class RestaurantController extends Controller
      */
     public function update(Request $request, Restaurant $restaurant)
     {
-        //
+        $restaurant->fill($request->all())->save();
+        return redirect()->route('restaurant.show', compact('restaurant'));
     }
 
     /**
