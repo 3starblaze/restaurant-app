@@ -5,5 +5,4 @@
         (Edit)
     </a>
     <p class="ml-5 max-w-xl">{{ $restaurant->description }}</p>
-    <p class="ml-5 mt-5 text-gray-500 text-sm">Contact @ {{ $restaurant->email }}</p>
 </x-guest-layout>

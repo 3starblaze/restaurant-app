@@ -5,8 +5,6 @@
         @method('PUT')
         <x-label name="name">Name</x-label>
         <x-input name="name" value="{{ $restaurant->name }}"></x-input>
-        <x-label name="email">E-mail</x-label>
-        <x-input name="email" value="{{ $restaurant->email }}">foo</x-input>
         <x-label name="description">Description</x-label>
         <textarea name="description" class="block">
             {{  $restaurant->description }}
