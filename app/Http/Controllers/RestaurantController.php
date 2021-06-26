@@ -48,7 +48,7 @@ class RestaurantController extends Controller
      */
     public function show(Restaurant $restaurant)
     {
-        //
+        return view('restaurant.show', compact('restaurant'));
     }
 
     /**
@@ -59,7 +59,7 @@ class RestaurantController extends Controller
      */
     public function edit(Restaurant $restaurant)
     {
-        //
+        return view('restaurant.edit', compact('restaurant'));
     }
 
     /**
@@ -71,7 +71,8 @@ class RestaurantController extends Controller
      */
     public function update(Request $request, Restaurant $restaurant)
     {
-        //
+        $restaurant->fill($request->all())->save();
+        return redirect()->route('restaurant.show', compact('restaurant'));
     }
 
     /**

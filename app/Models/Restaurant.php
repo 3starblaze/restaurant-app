@@ -17,8 +17,6 @@ class Restaurant extends Model
     protected $fillable = [
         'name',
         'description',
-        'email',
-        'password',
     ];
 
     /**
@@ -27,8 +25,7 @@ class Restaurant extends Model
      * @var array
      */
     protected $hidden = [
-        'password',
-        'remember_token',
+        //
     ];
 
     /**
@@ -37,6 +34,11 @@ class Restaurant extends Model
      * @var array
      */
     protected $casts = [
-        'email_verified_at' => 'datetime',
+        //
     ];
+
+    public function user()
+    {
+        return $this->belongsTo(User::class);
+    }
 }

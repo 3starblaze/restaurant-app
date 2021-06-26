@@ -14,7 +14,14 @@ use App\Http\Controllers\RestaurantController;
 |
 */
 
-Route::get('/', [RestaurantController::class, 'index']);
+Route::get('/', [RestaurantController::class, 'index'])
+    ->name('restaurant.index');
+Route::get('/restaurant/{restaurant}', [RestaurantController::class, 'show'])
+    ->name('restaurant.show');
+Route::get('restaurant/{restaurant}/edit', [RestaurantController::class, 'edit'])
+    ->name('restaurant.edit');
+Route::put('restaurant/{restaurant}/edit', [RestaurantController::class, 'update'])
+    ->name('restaurant.update');
 
 Route::get('/dashboard', function () {
     return view('dashboard');
