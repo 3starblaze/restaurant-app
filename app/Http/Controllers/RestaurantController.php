@@ -85,4 +85,15 @@ class RestaurantController extends Controller
     {
         //
     }
+
+    /**
+     * Open reservation creation view
+     *
+     * @param \App\Models\Restaurant  $restaurant
+     * @return \Illuminate\Http\Response
+     */
+    public function reserve(Restaurant $restaurant)
+    {
+        return view('reservations.create', compact('restaurant'));
+    }
 }

@@ -26,5 +26,6 @@ class DatabaseSeeder extends Seeder
             'name' => 'Adminifoods',
         ]);
         \App\Models\Restaurant::factory(10)->create();
+        \App\Models\Reservation::factory(15)->create();
     }
 }

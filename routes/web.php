@@ -1,7 +1,9 @@
 <?php
 
+use App\Http\Controllers\ReservationController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\RestaurantController;
+use App\Models\Restaurant;
 
 /*
 |--------------------------------------------------------------------------
@@ -14,6 +16,7 @@ use App\Http\Controllers\RestaurantController;
 |
 */
 
+// Restaurants
 Route::get('/', [RestaurantController::class, 'index'])
     ->name('restaurant.index');
 Route::get('/restaurant/{restaurant}', [RestaurantController::class, 'show'])
@@ -22,6 +25,11 @@ Route::get('restaurant/{restaurant}/edit', [RestaurantController::class, 'edit']
     ->name('restaurant.edit');
 Route::put('restaurant/{restaurant}/edit', [RestaurantController::class, 'update'])
     ->name('restaurant.update');
+Route::get('/restaurant/{restaurant}/reservations', [RestaurantController::class, 'reserve'])
+    ->name('restaurant.reserve');
+
+// Reservations
+Route::resource('reservations', ReservationController::class);
 
 Route::get('/dashboard', function () {
     return view('dashboard');
