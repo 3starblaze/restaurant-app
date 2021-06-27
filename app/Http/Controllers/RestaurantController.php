@@ -8,6 +8,16 @@ use Illuminate\Http\Request;
 class RestaurantController extends Controller
 {
     /**
+     * Create the controller instance.
+     *
+     * @return void
+     */
+    public function __construct()
+    {
+        $this->authorizeResource(Restaurant::class, 'restaurant');
+    }
+
+    /**
      * Display a listing of the resource.
      *
      * @return \Illuminate\Http\Response
