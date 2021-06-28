@@ -9,7 +9,7 @@
             </h2>
             <p>{{ $restaurant->description }}</p>
             <br>
-            <a href="{{ route('restaurant.reserve', compact('restaurant')) }}">(Rezervēt tagad)</a>
+            <a href="{{ route('reservations.create', compact('restaurant')) }}">(Reserve now)</a>
         </div>
     @empty
         <p>No restaurants yet.</p>

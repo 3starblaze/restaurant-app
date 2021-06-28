@@ -10,17 +10,19 @@
     </a>
     <a class="text-blue-800" href="{{ route('reservations.index') }}">Back to list</a>
     <hr>
-    <p class="ml-5 max-w-xl">Rezervācijas sākums: {{ $reservation->starttime }}</p>
+    <p class="ml-5 max-w-xl">Start: {{ $reservation->start_time }}</p>
     <hr>
-    <p class="ml-5 max-w-xl">Rezervācijas beigas: {{ $reservation->endtime }}</p>
+    <p class="ml-5 max-w-xl">End: {{ $reservation->end_time }}</p>
     <hr>
-    <p class="ml-5 max-w-xl">Viesu skaits: {{ $reservation->personcount }}</p>
+    <p class="ml-5 max-w-xl">Guests count: {{ $reservation->person_count }}</p>
     <hr>
-    <p class="ml-5 max-w-xl">Galdiņa nr: {{ $reservation->tablenum }}</p>
+    <p class="ml-5 max-w-xl">Table: {{ $reservation->table_num }}</p>
     <hr>
-    <p class="ml-5 max-w-xl">Vārds, uz kuru rezervē: {{ $reservation->reserver }}</p>
+    <p class="ml-5 max-w-xl">Reserver name: {{ $reservation->reserver }}</p>
     <hr>
-    <p class="ml-5 max-w-xl">Piezīmes: {{ $reservation->description }}</p>
+    <p class="ml-5 max-w-xl">Notes: {{ $reservation->description }}</p>
     <hr>
-    <p class="ml-5 max-w-xl">Restorāns: {{ $restaurant->name }}</p>
+    <p class="ml-5 max-w-xl">Restaurant: {{ $restaurant->name }}</p>
+    <hr>
+    <p class="ml-5 max-w-xl">Phone: {{ $reservation->phone_number }}</p>
 </x-guest-layout>

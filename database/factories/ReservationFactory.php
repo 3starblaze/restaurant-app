@@ -24,12 +24,13 @@ class ReservationFactory extends Factory
     {
         return [
             'restaurant_id' => Restaurant::factory()->create(),
-            'starttime' => now(),
-            'endtime' => $this->faker->time(),
-            'personcount' => rand(1, 5),
-            'tablenum' => rand(1, 20),
+            'start_time' => now(),
+            'end_time' => $this->faker->time(),
+            'person_count' => rand(1, 5),
+            'table_num' => rand(1, 20),
             'reserver' => $this->faker->name(),
             'description' => $this->faker->paragraph(),
+            'phone_number' => $this->faker->phoneNumber()
         ];
     }
 

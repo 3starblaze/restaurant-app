@@ -24,6 +24,7 @@ class ReservationController extends Controller
     /**
      * Show the form for creating a new resource.
      *
+     * @param \App\Models\Restaurant $restaurant
      * @return \Illuminate\Http\Response
      */
     public function create(Restaurant $restaurant)
@@ -44,6 +45,7 @@ class ReservationController extends Controller
 
         $id = $request->restaurant_id;
         $restaurant = Restaurant::find($id);
+        //$restaurant = $reservation->restaurant;
 
         // input current user name automatically (can also choose to use different person name)
         // TODO: get real user data here (auth)
@@ -101,9 +103,10 @@ class ReservationController extends Controller
      * @param  \App\Models\Reservation  $reservation
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Reservation $reservation, Restaurant $restaurant)
+    public function destroy(Reservation $reservation)
     {
         // TODO: fix the deletion. Possible implementation of soft deletion
+        $restaurant = $reservation->restaurant;
         $restaurant->reservations()
             ->where('id', $reservation->id)->delete();
 

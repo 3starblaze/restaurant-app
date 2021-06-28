@@ -7,14 +7,15 @@
         <div class="ml-5 mt-5 max-w-xl">
             <h2 class="font-bold text-blue-800">
                 <a href="{{ route('reservations.show', compact('reservation')) }}">
-                    Rezervācijas nr. {{ $reservation->id }}
+                    Reservation: {{ $reservation->id }}
                 </a>
             </h2>
-            <p>Sākums: {{ $reservation->starttime }}</p>
-            <p>Beigas: {{ $reservation->endtime }}</p>
-            <p>Cilvēku skaits: {{ $reservation->personcount }}</p>
-            <p>Galda nr: {{ $reservation->tablenum }}</p>
-            <p>Rezervētāja vārds: {{ $reservation->reserver }}</p>
+            <p>Start time: {{ $reservation->start_time }}</p>
+            <p>End time: {{ $reservation->end_time }}</p>
+            <p>Guests count: {{ $reservation->person_count }}</p>
+            <p>Table: {{ $reservation->table_num }}</p>
+            <p>Reserver name: {{ $reservation->reserver }}</p>
+            <p style="font-weight: bold">Phone: {{ $reservation->phone_number }}</p>
         </div>
     @empty
         <p>No reservations yet.</p>

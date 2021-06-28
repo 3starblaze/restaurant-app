@@ -10,12 +10,13 @@ class Reservation extends Model
     use HasFactory;
 
     protected $fillable = [
-        'starttime',
-        'endtime',
-        'personcount',
-        'tablenum',
+        'start_time',
+        'end_time',
+        'person_count',
+        'table_num',
         'description',
         'reserver',
+        'phone_number'
     ];
 
     public function restaurant()
