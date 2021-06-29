@@ -44,9 +44,9 @@ class RestaurantPolicy
      * @param  \App\Models\User  $user
      * @return mixed
      */
-    public function create(User $user)
+    public function create(?User $user)
     {
-        return false; // TODO
+        return true;
     }
 
     /**

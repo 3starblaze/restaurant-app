@@ -3,7 +3,13 @@
 namespace App\Http\Controllers;
 
 use App\Models\Restaurant;
+use App\Models\User;
+use App\Providers\RouteServiceProvider;
+use Illuminate\Auth\Events\Registered;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Hash;
+use Illuminate\Validation\Rules;
 
 class RestaurantController extends Controller
 {
@@ -36,7 +42,7 @@ class RestaurantController extends Controller
      */
     public function create()
     {
-        //
+        return view('restaurant.create');
     }
 
     /**
@@ -47,7 +53,35 @@ class RestaurantController extends Controller
      */
     public function store(Request $request)
     {
-        //
+
+        $request->validate([
+            'name' => 'required|string|max:255',
+            'email' => 'required|string|email|max:255|unique:users',
+            'password' => ['required', 'confirmed', Rules\Password::defaults()],
+        ]);
+
+        $request->validate([
+           'restaurant-name' => 'required|string|max:255',
+           'restaurant-description' => 'required|string',
+        ]);
+
+        $user = User::create([
+            'name' => $request->name,
+            'email' => $request->email,
+            'password' => Hash::make($request->password),
+        ]);
+
+        event(new Registered($user));
+
+        Restaurant::create([
+            'name' => $request->input('restaurant-name'),
+            'description' => $request->input('restaurant-description'),
+            'user_id' => $user->id,
+        ]);
+
+        Auth::login($user);
+
+        return redirect('/');
     }
 
     /**
