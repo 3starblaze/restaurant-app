@@ -75,11 +75,27 @@
 
     <!-- Responsive Navigation Menu -->
     <div :class="{'block': open, 'hidden': ! open}" class="hidden sm:hidden">
+
+        @auth
         <div class="pt-2 pb-3 space-y-1">
             <x-responsive-nav-link :href="route('dashboard')" :active="request()->routeIs('dashboard')">
                 {{ __('Dashboard') }}
             </x-responsive-nav-link>
         </div>
+        @endauth
+
+        @guest
+        <div>
+            <x-responsive-nav-link :href="route('login')" :active="request()->routeIs('login')">
+                {{ __('Login') }}
+            </x-responsive-nav-link>
+            <x-responsive-nav-link
+                :href="route('restaurant.create')"
+                :active="request()->routeIs('restaurant.create')">
+                {{ __('Register') }}
+            </x-responsive-nav-link>
+        </div>
+        @endguest
 
         <!-- Responsive Settings Options -->
         @auth
