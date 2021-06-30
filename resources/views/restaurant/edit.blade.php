@@ -1,4 +1,5 @@
-<x-guest-layout>
+<x-app-layout>
+    <x-slot name="header">{{ __('Edit restaurant') }}</x-slot>
     <form method="POST" class="m-5"
           action="{{ route('restaurant.edit', compact('restaurant')) }}">
         @csrf
@@ -11,4 +12,4 @@
         </textarea>
         <x-button class="mt-5">Submit</x-button>
     </form>
-</x-guest-layout>
+</x-app-layout>
