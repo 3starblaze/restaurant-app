@@ -1,8 +1,7 @@
-<x-guest-layout>
-    {{ App::setLocale('lv') }}
-    <h1 class="m-5 text-3xl">{{ __('Register') }}</h1>
+<x-app-layout>
+    <x-slot name="header">{{ __('Register') }}</x-slot>
     <x-auth-validation-errors class="mb-4" :errors="$errors" />
-    <form class="m-5 max-w-md"
+    <form class="m-5 max-w-md mx-auto"
           method="POST" action="{{ route('restaurant.store') }}">
         @csrf
         <div class="mt-4">
@@ -37,6 +36,8 @@
                 {{  old('restaurant-description') }}
             </textarea>
         </div>
-        <x-button class="mt-5">{{ __('Register') }}</x-button>
+        <div class="flex justify-end">
+            <x-button class="mt-5">{{ __('Register') }}</x-button>
+        </div>
     </form>
-</x-guest-layout>
+</x-app-layout>
