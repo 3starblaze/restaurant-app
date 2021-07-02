@@ -2,7 +2,6 @@
     <x-slot name="header">{{ __('Register') }}</x-slot>
     <x-auth-validation-errors class="mb-4" :errors="$errors" />
 
-    <x-map-block />
 
     <form class="m-5 max-w-md mx-auto"
           method="POST" action="{{ route('restaurant.store') }}">
@@ -28,6 +27,7 @@
                      name="password_confirmation" required />
         </div>
         <hr class="border my-8 w-auto" />
+        <x-map-block />
         <div class="mt-6">
             <x-label name="restaurant-name">{{ __('Restaurant name') }}</x-label>
             <x-input name="restaurant-name" :value="old('restaurant-name')"

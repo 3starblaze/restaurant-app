@@ -1,9 +1,11 @@
-<div class="flex gap-4">
-    <div id="map" class="h-80 flex-1"></div>
-    <div class="inline-block">
-        <p>{{ __('Latitude') }}: <em id="map-latitude">none</em></p>
+<div>
+    <div id="map" class="h-80 w-full"></div>
+    <div class="inline-block flex">
+        <p class="mr-5">{{ __('Latitude') }}: <em id="map-latitude">none</em></p>
         <p>{{ __('Longitude') }}: <em id="map-longitude">none</em></p>
     </div>
+    <input id="map-latitude-input" type="hidden" name="latitude" />
+    <input id="map-longitude-input" type="hidden" name="longitude" />
 </div>
 
 <script type="text/javascript">
@@ -29,6 +31,8 @@
 
      document.getElementById('map-latitude').textContent = latitude.toFixed(4);
      document.getElementById('map-longitude').textContent = longitude.toFixed(4);
+     document.getElementById('map-latitude-input').value = latitude;
+     document.getElementById('map-longitude-input').value = longitude;
  }
 
  mymap.on('click', onMapClick);
