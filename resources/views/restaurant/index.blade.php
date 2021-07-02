@@ -19,7 +19,9 @@
      L.marker({
          lat: {{ $restaurant->latitude }},
          lng: {{ $restaurant->longitude }}
-     }).addTo(mymap);
+     }).addTo(mymap).bindPopup(
+         '{{ __('Restaurant') }} <a href="{{ route('restaurant.show', $restaurant) }} ">{{ $restaurant->name }}</a>'
+     );
      @endforeach
     </script>
 
