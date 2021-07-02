@@ -2,8 +2,8 @@
     <x-slot name="header">{{ __('Register') }}</x-slot>
     <x-auth-validation-errors class="mb-4" :errors="$errors" />
 
-    <div id="map" class="h-80">
-    </div>
+    <x-map-block />
+
     <form class="m-5 max-w-md mx-auto"
           method="POST" action="{{ route('restaurant.store') }}">
         @csrf
