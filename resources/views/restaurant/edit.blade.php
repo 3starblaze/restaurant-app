@@ -26,36 +26,30 @@
              accessToken: '{{ env('MAP_PUBLIC_TOKEN')  }}',
          }).addTo(mymap);
 
-         let latitude = {{ $restaurant->latitude }};
-         let longitude = {{ $restaurant->longitude }};
-         let currentMarker = L.marker({ lat: latitude, lng: longitude }).addTo(mymap);
+         class MarkerInfo {
+             constructor(lat, lng) {
+                 this.update(lat, lng);
+             }
 
-         function updateLocation() {
-             const lat = latitude;
-             const lng = longitude;
-             if (currentMarker) mymap.removeLayer(currentMarker);
-             currentMarker = L.marker({ lat, lng }).addTo(mymap);
-             document.getElementById('map-latitude').textContent = lat.toFixed(4);
-             document.getElementById('map-longitude').textContent = lng.toFixed(4);
-             document.getElementById('map-latitude-input').value = lat;
-             document.getElementById('map-longitude-input').value = lng;
+             update(lat, lng) {
+                 if (this.markerObj) mymap.removeLayer(this.markerObj);
+                 this.markerObj = L.marker({ lat, lng }).addTo(mymap);
+                 document.getElementById('map-latitude').textContent = lat.toFixed(4);
+                 document.getElementById('map-longitude').textContent = lng.toFixed(4);
+                 document.getElementById('map-latitude-input').value = lat;
+                 document.getElementById('map-longitude-input').value = lng;
+             }
          }
 
-         updateLocation();
+         const mainMarker = new MarkerInfo({{ $restaurant->latitude }}, {{ $restaurant->longitude }});
 
          // Old location marker
          L.marker({
-             lat: latitude,
-             lng: longitude,
+             lat: {{ $restaurant->latitude }},
+             lng: {{ $restaurant->longitude }},
          }, { opacity: 0.5 }).addTo(mymap);
 
-         function onMapClick(e) {
-             latitude = e.latlng.lat;
-             longitude = e.latlng.lng;
-             updateLocation();
-         }
-
-         mymap.on('click', onMapClick);
+         mymap.on('click', (e) => mainMarker.update(e.latlng.lat, e.latlng.lng));
         </script>
 
 
