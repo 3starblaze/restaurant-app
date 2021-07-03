@@ -19,21 +19,20 @@
      accessToken: '{{ env('MAP_PUBLIC_TOKEN')  }}',
  }).addTo(mymap);
 
- let currentMarker = null;
- let latitude = null;
- let longitude = null;
-
- function onMapClick(e) {
-     if (currentMarker) mymap.removeLayer(currentMarker);
-     currentMarker = L.marker(e.latlng).addTo(mymap);
-     latitude = e.latlng.lat;
-     longitude = e.latlng.lng;
-
-     document.getElementById('map-latitude').textContent = latitude.toFixed(4);
-     document.getElementById('map-longitude').textContent = longitude.toFixed(4);
-     document.getElementById('map-latitude-input').value = latitude;
-     document.getElementById('map-longitude-input').value = longitude;
+ class MarkerInfo {
+     update(lat, lng) {
+         if (this.markerObj) mymap.removeLayer(this.markerObj);
+         this.markerObj = L.marker({ lat, lng }).addTo(mymap);
+         document.getElementById('map-latitude').textContent = lat.toFixed(4);
+         document.getElementById('map-longitude').textContent = lng.toFixed(4);
+         document.getElementById('map-latitude-input').value = lat;
+         document.getElementById('map-longitude-input').value = lng;
+     }
  }
 
- mymap.on('click', onMapClick);
+ const mainMarker = new MarkerInfo();
+
+ mymap.on('click', (e) => mainMarker.update(e.latlng.lat, e.latlng.lng));
+
+ {{ $slot }}
 </script>
