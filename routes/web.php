@@ -16,6 +16,10 @@ use App\Http\Controllers\RestaurantController;
 
 Route::get('/', [RestaurantController::class, 'index'])
     ->name('restaurant.index');
+Route::get('/register', [RestaurantController::class, 'create'])
+    ->name('restaurant.create');
+Route::post('/register', [RestaurantController::class, 'store'])
+    ->name('restaurant.store');
 Route::get('/restaurant/{restaurant}', [RestaurantController::class, 'show'])
     ->name('restaurant.show');
 Route::get('restaurant/{restaurant}/edit', [RestaurantController::class, 'edit'])

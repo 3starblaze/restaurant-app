@@ -1,4 +1,5 @@
-<x-guest-layout>
+<x-app-layout>
+    <x-slot name="header">Login</x-slot>
     <x-auth-card>
         <x-slot name="logo">
             <a href="/">
@@ -53,4 +54,4 @@
             </div>
         </form>
     </x-auth-card>
-</x-guest-layout>
+</x-app-layout>

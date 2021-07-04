@@ -1,5 +1,7 @@
-<x-guest-layout>
-    <h1 class="text-3xl m-3">Restaurants</h1>
+<x-app-layout>
+    <x-slot name="header">
+        {{ __('Restaurants') }}
+    </x-slot>
     @forelse ($restaurants as $restaurant)
         <div class="ml-5 mt-5 max-w-xl">
             <h2 class="font-bold text-blue-800">
@@ -12,4 +14,4 @@
     @empty
         <p>No restaurants yet.</p>
     @endforelse
-</x-guest-layout>
+</x-app-layout>

@@ -1,4 +1,5 @@
-<x-guest-layout>
+<x-app-layout>
+    <x-slot name="header">{{ __('Verify Email') }}</x-slot>
     <x-auth-card>
         <x-slot name="logo">
             <a href="/">
@@ -36,4 +37,4 @@
             </form>
         </div>
     </x-auth-card>
-</x-guest-layout>
+</x-app-layout>
