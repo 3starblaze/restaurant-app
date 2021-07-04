@@ -34,6 +34,15 @@ Route::group([
         ->only(['show', 'edit', 'update']);
 });
 
+Route::group([
+    'prefix' => '/business/{locale}',
+    'middleware' => 'lang',
+], function () {
+    Route::get('/', function () {
+        return view('business-home');
+    });
+});
+
 Route::get('/register', [RestaurantController::class, 'create'])
     ->name('restaurant.create');
 Route::post('/register', [RestaurantController::class, 'store'])
