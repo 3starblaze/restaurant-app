@@ -27,6 +27,8 @@ class RestaurantFactory extends Factory
             'user_id' => User::factory()->create(),
             'name' => $this->faker->word(),
             'description' => $this->faker->paragraph(),
+            'latitude' => $this->faker->randomFloat(4, 56.9513 - 0.01, 56.9513 + 0.01),
+            'longitude' => $this->faker->randomFloat(4, 24.1325 - 0.1, 24.1325 + 0.1),
         ];
     }
 
