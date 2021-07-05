@@ -58,6 +58,7 @@ class RestaurantController extends Controller
             'name' => 'required|string|max:255',
             'email' => 'required|string|email|max:255|unique:users',
             'password' => ['required', 'confirmed', Rules\Password::defaults()],
+            'locale' => \App::getLocale(),
         ]);
 
         $request->validate([
@@ -69,6 +70,7 @@ class RestaurantController extends Controller
             'name' => $request->name,
             'email' => $request->email,
             'password' => Hash::make($request->password),
+            'locale' => \App::getLocale(),
         ]);
 
         event(new Registered($user));
