@@ -1,5 +1,8 @@
 {
     "Name": "Vārds",
+    "Dashboard": "Kontrolpanelis",
+    "Edit": "Rediģēt",
+    "Edit restaurant": "Rediģēt restorānu",
     "Email": "Epasts",
     "Password": "Parole",
     "Confirm Password": "Apstipriniet Paroli",
@@ -12,5 +15,6 @@
     "Restaurants": "Restorāni",
     "Restaurant name": "Restorāna nosaukums",
     "Restaurant description": "Restorāna apraksts",
-    "Business": "Bizness"
+    "Business": "Bizness",
+    "Submit": "Iesūtīt"
 }

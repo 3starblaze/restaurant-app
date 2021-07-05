@@ -10,6 +10,6 @@
         <textarea name="description" class="block">
             {{  $restaurant->description }}
         </textarea>
-        <x-button class="mt-5">Submit</x-button>
+        <x-button class="mt-5">{{ __('Submit') }}</x-button>
     </form>
 </x-app-layout>
