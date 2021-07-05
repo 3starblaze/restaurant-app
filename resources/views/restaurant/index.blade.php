@@ -5,10 +5,7 @@
     @forelse ($restaurants as $restaurant)
         <div class="ml-5 mt-5 max-w-xl">
             <h2 class="font-bold text-blue-800">
-                <a href="{{ route('restaurant.show', [
-                            'restaurant' => $restaurant,
-                            'locale' => App::getLocale(),
-                            ]) }}">
+                <a href="{{ route('restaurant.show', compact('restaurant')) }}">
                     {{ $restaurant->name }}
                 </a>
             </h2>

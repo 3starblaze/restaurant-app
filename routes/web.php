@@ -41,15 +41,17 @@ Route::group([
     Route::get('/', function () {
         return view('business-home');
     });
+
+    Route::get('/register', [RestaurantController::class, 'create'])
+        ->name('restaurant.create');
+
+    Route::post('/register', [RestaurantController::class, 'store'])
+        ->name('restaurant.store');
+
+    Route::get('/dashboard', function () {
+        return view('dashboard');
+    })->middleware(['auth'])->name('dashboard');
+
+    require __DIR__.'/auth.php';
 });
 
-Route::get('/register', [RestaurantController::class, 'create'])
-    ->name('restaurant.create');
-Route::post('/register', [RestaurantController::class, 'store'])
-    ->name('restaurant.store');
-
-Route::get('/dashboard', function () {
-    return view('dashboard');
-})->middleware(['auth'])->name('dashboard');
-
-require __DIR__.'/auth.php';

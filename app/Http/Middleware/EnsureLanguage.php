@@ -4,6 +4,7 @@ namespace App\Http\Middleware;
 
 use Closure;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\URL;
 
 class EnsureLanguage
 {
@@ -20,6 +21,9 @@ class EnsureLanguage
         if (!in_array($locale, ['en', 'lv'])) abort(400);
         \App::setLocale($locale);
         $request->route()->forgetParameter('locale');
+
+        // Pass locale automatically to route helper
+        URL::defaults(['locale' => \App::getLocale()]);
 
         return $next($request);
     }
