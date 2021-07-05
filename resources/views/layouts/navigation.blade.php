@@ -1,4 +1,6 @@
 @php
+URL::defaults(['locale' => \App::getLocale()]);
+
 // Return current route but use locale specified in $locale
 function thisWithLocale($locale) {
     return route(Route::getCurrentRoute()->action['as'], array_merge(
@@ -44,10 +46,12 @@ function thisWithLocale($locale) {
 
 
                 <!-- Language links -->
+                @guest
                 <div class="my-auto ml-10">
                     <x-nav-link :href="thisWithLocale('en')" :active="App::getLocale() == 'en'">en</x-nav-link>
                     <x-nav-link :href="thisWithLocale('lv')" :active="App::getLocale() == 'lv'">lv</x-nav-link>
                 </div>
+                @endguest
             </div>
 
             @auth

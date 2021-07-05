@@ -34,6 +34,11 @@ Route::group([
         ->only(['show', 'edit', 'update']);
 });
 
+Route::get('business/dashboard', function () {
+    App::setLocale(Auth::user()->locale);
+    return view('dashboard');
+})->middleware(['auth'])->name('dashboard');
+
 Route::group([
     'prefix' => '/business/{locale}',
     'middleware' => 'lang',
@@ -48,10 +53,5 @@ Route::group([
     Route::post('/register', [RestaurantController::class, 'store'])
         ->name('restaurant.store');
 
-    Route::get('/dashboard', function () {
-        return view('dashboard');
-    })->middleware(['auth'])->name('dashboard');
-
     require __DIR__.'/auth.php';
 });
-
