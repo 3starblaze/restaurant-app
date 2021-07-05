@@ -17,6 +17,9 @@ class Restaurant extends Model
     protected $fillable = [
         'name',
         'description',
+        'latitude',
+        'longitude',
+        'user_id',
     ];
 
     /**
@@ -34,7 +37,7 @@ class Restaurant extends Model
      * @var array
      */
     protected $casts = [
-        //
+        'verified_at' => 'datetime',
     ];
 
     public function user()
