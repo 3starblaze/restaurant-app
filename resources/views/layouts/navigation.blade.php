@@ -86,12 +86,15 @@ function thisWithLocale($locale) {
                             @csrf
                             @method('PUT')
 
-                            <x-dropdown-link onclick="event.preventDefault();
-                                                      this.closest('form').submit();">
+                            <x-dropdown-link>
                                 <label for="locale">{{ __('Language') }}</label>
                                 <select name="locale">
-                                    <option value="en" {{ (App::getLocale() == 'en') ? 'selected' : '' }}>en</option>
-                                    <option value="lv" {{ (App::getLocale() == 'lv') ? 'selected' : '' }}>lv</option>
+                                    <option value="en" onclick="event.preventDefault();
+                                                      this.closest('form').submit();"
+                                            {{ (App::getLocale() == 'en') ? 'selected' : '' }}>en</option>
+                                    <option value="lv" onclick="event.preventDefault();
+                                                      this.closest('form').submit();"
+                                            {{ (App::getLocale() == 'lv') ? 'selected' : '' }}>lv</option>
                                 </select>
                             </x-dropdown-link>
                         </form>
