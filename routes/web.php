@@ -2,6 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\RestaurantController;
+use App\Http\Controllers\LocaleChangeController;
 
 /*
 |--------------------------------------------------------------------------
@@ -38,6 +39,9 @@ Route::get('business/dashboard', function () {
     App::setLocale(Auth::user()->locale);
     return view('dashboard');
 })->middleware(['auth'])->name('dashboard');
+
+Route::put('business/dashboard', LocaleChangeController::class)
+    ->middleware('auth')->name('change-locale');
 
 Route::group([
     'prefix' => '/business/{locale}',

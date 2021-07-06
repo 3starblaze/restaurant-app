@@ -81,6 +81,20 @@ function thisWithLocale($locale) {
                                 {{ __('Log Out') }}
                             </x-dropdown-link>
                         </form>
+
+                        <form method="POST" action="{{ route('change-locale') }}">
+                            @csrf
+                            @method('PUT')
+
+                            <x-dropdown-link onclick="event.preventDefault();
+                                                      this.closest('form').submit();">
+                                <label for="locale">{{ __('Language') }}</label>
+                                <select name="locale">
+                                    <option value="en" {{ (App::getLocale() == 'en') ? 'selected' : '' }}>en</option>
+                                    <option value="lv" {{ (App::getLocale() == 'lv') ? 'selected' : '' }}>lv</option>
+                                </select>
+                            </x-dropdown-link>
+                        </form>
                     </x-slot>
                 </x-dropdown>
             </div>
