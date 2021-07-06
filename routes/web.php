@@ -15,13 +15,6 @@ use App\Http\Controllers\LocaleChangeController;
 |
 */
 
-function createLocaleStripper($method) {
-    return function($locale, Restaurant $restaurant) use ($method) {
-        $controller = app()->make(RestaurantController::class);
-        return app()->call([$controller, $method], compact('restaurant'));
-    };
-}
-
 Route::redirect('/', '/home/en');
 
 Route::group([
