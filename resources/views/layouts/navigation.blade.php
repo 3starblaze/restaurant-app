@@ -48,8 +48,11 @@ function thisWithLocale($locale) {
                 <!-- Language links -->
                 @guest
                 <div class="my-auto ml-10">
-                    <x-nav-link :href="thisWithLocale('en')" :active="App::getLocale() == 'en'">en</x-nav-link>
-                    <x-nav-link :href="thisWithLocale('lv')" :active="App::getLocale() == 'lv'">lv</x-nav-link>
+                    @foreach(getDefinedLocales() as $locale)
+                        <x-nav-link :href="thisWithLocale($locale)" :active="App::getLocale() == $locale">
+                            {{ $locale }}
+                        </x-nav-link>
+                    @endforeach
                 </div>
                 @endguest
             </div>
@@ -89,12 +92,13 @@ function thisWithLocale($locale) {
                             <x-dropdown-link>
                                 <label for="locale">{{ __('Language') }}</label>
                                 <select name="locale">
-                                    <option value="en" onclick="event.preventDefault();
-                                                      this.closest('form').submit();"
-                                            {{ (App::getLocale() == 'en') ? 'selected' : '' }}>en</option>
-                                    <option value="lv" onclick="event.preventDefault();
-                                                      this.closest('form').submit();"
-                                            {{ (App::getLocale() == 'lv') ? 'selected' : '' }}>lv</option>
+                                    @foreach(getDefinedLocales() as $locale)
+                                        <option value="{{ $locale }}"
+                                                onclick="event.preventDefault(); this.closest('form').submit();"
+                                                {{ (App::getLocale() == $locale) ? 'selected' : '' }}>
+                                            {{ $locale }}
+                                        </option>
+                                    @endforeach
                                 </select>
                             </x-dropdown-link>
                         </form>

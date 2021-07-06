@@ -14,7 +14,7 @@ class LocaleChangeController extends Controller
         Validator::make(['locale' => $request->locale], [
             'locale' => [
                 'required',
-                Rule::in('en', 'lv'),
+                Rule::in(getDefinedLocales()),
             ],
         ]);
 
