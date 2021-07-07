@@ -34,10 +34,9 @@ Route::group([
     Route::get('/', function () {
         App::setLocale(Auth::user()->locale);
         return view('dashboard');
-    })->middleware(['auth'])->name('dashboard');
+    })->name('dashboard');
 
-    Route::put('/', LocaleChangeController::class)
-        ->middleware('auth')->name('change-locale');
+    Route::put('/', LocaleChangeController::class)->name('change-locale');
 
     require __DIR__.'/user-auth.php';
 });
