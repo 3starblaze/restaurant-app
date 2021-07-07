@@ -33,10 +33,6 @@ class EnsureLanguage
 
         URL::defaults(['locale' => \App::getLocale()]);
 
-        // print("FOO>>");
-        // print(\App::getLocale());
-        // print("<<FOO");
-
         return $next($request);
     }
 }
