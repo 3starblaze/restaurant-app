@@ -28,13 +28,20 @@ Route::group([
         ->only(['show', 'edit', 'update']);
 });
 
-Route::get('business/dashboard', function () {
-    App::setLocale(Auth::user()->locale);
-    return view('dashboard');
-})->middleware(['auth'])->name('dashboard');
+Route::group([
+    'prefix' => '/business/dashboard',
+    'middleware' => 'auth',
+], function () {
+    Route::get('/', function () {
+        App::setLocale(Auth::user()->locale);
+        return view('dashboard');
+    })->middleware(['auth'])->name('dashboard');
 
-Route::put('business/dashboard', LocaleChangeController::class)
-    ->middleware('auth')->name('change-locale');
+    Route::put('/', LocaleChangeController::class)
+        ->middleware('auth')->name('change-locale');
+
+    require __DIR__.'/user-auth.php';
+});
 
 Route::group([
     'prefix' => '/business/{locale}',
@@ -50,5 +57,5 @@ Route::group([
     Route::post('/register', [RestaurantController::class, 'store'])
         ->name('restaurant.store');
 
-    require __DIR__.'/auth.php';
+    require __DIR__.'/guest-auth.php';
 });

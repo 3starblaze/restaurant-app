@@ -10,7 +10,7 @@ class PasswordConfirmationTest extends TestCase
 {
     use RefreshDatabase;
 
-    private $confirmPasswordURL = '/business/en/confirm-password';
+    private $confirmPasswordURL = '/business/dashboard/confirm-password';
 
     public function test_confirm_password_screen_can_be_rendered()
     {

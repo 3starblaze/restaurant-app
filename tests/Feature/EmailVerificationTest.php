@@ -26,7 +26,7 @@ class EmailVerificationTest extends TestCase
             'email_verified_at' => null,
         ]);
 
-        $response = $this->actingAs($user)->get('/business/en/verify-email');
+        $response = $this->actingAs($user)->get('/business/dashboard/verify-email');
 
         $response->assertStatus(200);
     }
