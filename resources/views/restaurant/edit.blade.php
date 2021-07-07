@@ -4,6 +4,15 @@
           action="{{ route('restaurant.update', compact('restaurant')) }}">
         @csrf
         @method('PUT')
+
+        <x-map-block>
+            L.marker({
+              lat: {{ $restaurant->latitude }},
+              lng: {{ $restaurant->longitude }},
+            }, { opacity: 0.5 }).addTo(mymap);
+
+            mainMarker.update({{ $restaurant->latitude }}, {{  $restaurant->longitude }});
+        </x-map-block>
         <x-label name="name">Name</x-label>
         <x-input name="name" value="{{ $restaurant->name }}"></x-input>
         <x-label name="description">Description</x-label>

@@ -64,6 +64,8 @@ class RestaurantController extends Controller
         $request->validate([
            'restaurant-name' => 'required|string|max:255',
            'restaurant-description' => 'required|string',
+           'latitude' => 'required|numeric',
+           'longitude' => 'required|numeric',
         ]);
 
         $user = User::create([
@@ -78,6 +80,8 @@ class RestaurantController extends Controller
         Restaurant::create([
             'name' => $request->input('restaurant-name'),
             'description' => $request->input('restaurant-description'),
+            'latitude' => $request->latitude,
+            'longitude' => $request->longitude,
             'user_id' => $user->id,
         ]);
 
