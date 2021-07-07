@@ -19,7 +19,6 @@ Route::redirect('/', '/home/en');
 
 Route::group([
     'prefix' => '/home/{locale}',
-    'middleware' => 'lang',
 ], function ($restaurant) {
     Route::get('/', [RestaurantController::class, 'index'])
         ->name('restaurant.index');
@@ -45,7 +44,6 @@ Route::group([
 
 Route::group([
     'prefix' => '/business/{locale}',
-    'middleware' => 'lang',
 ], function () {
     Route::get('/', function () {
         return view('business-home');

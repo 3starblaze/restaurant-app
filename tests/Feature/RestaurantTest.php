@@ -16,7 +16,7 @@ class RestaurantTest extends TestCase
     public function setUp(): void
     {
         parent::setUp();
-        URL::defaults(['locale' => \App::getLocale()]);
+        URL::defaults(['locale' => 'en']);
     }
 
     public function test_authorized_restaurant_can_edit()
