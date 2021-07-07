@@ -28,6 +28,9 @@ class RegistrationTest extends TestCase
             'restaurant-name' => 'Test Restaurant',
             'restaurant-description' => 'A somewhat longer description that
 is not lorem ipsum.',
+
+            'latitude' => 56.9601,
+            'longitude' => 23.1304,
         ]);
 
         $this->assertAuthenticated();
