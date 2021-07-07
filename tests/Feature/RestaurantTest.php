@@ -80,7 +80,7 @@ class RestaurantTest extends TestCase
 
         $this->actingAs($restaurant->user)
              ->get(route('restaurant.show', $restaurant))
-             ->assertSeeText('(Edit)');
+             ->assertSeeText(__('Edit'));
     }
 
     public function test_unauthorized_restaurant_does_not_see_edit_button()
@@ -90,7 +90,7 @@ class RestaurantTest extends TestCase
 
         $this->actingAs($otherUser)
              ->get(route('restaurant.show', $restaurant))
-             ->assertDontSeeText('(Edit)');
+             ->assertDontSeeText(__('Edit'));
     }
 
     public function test_guest_does_not_see_edit_button()
@@ -99,6 +99,6 @@ class RestaurantTest extends TestCase
 
         $this->get(route('restaurant.show', $restaurant))
              ->assertStatus(200)
-             ->assertDontSeeText('(Edit)');
+             ->assertDontSeeText(__('Edit'));
     }
 }
