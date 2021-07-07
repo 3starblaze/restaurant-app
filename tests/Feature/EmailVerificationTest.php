@@ -14,13 +14,19 @@ class EmailVerificationTest extends TestCase
 {
     use RefreshDatabase;
 
+    public function setUp(): void
+    {
+        parent::setUp();
+        URL::defaults(['locale' => \App::getLocale()]);
+    }
+
     public function test_email_verification_screen_can_be_rendered()
     {
         $user = User::factory()->create([
             'email_verified_at' => null,
         ]);
 
-        $response = $this->actingAs($user)->get('/verify-email');
+        $response = $this->actingAs($user)->get('/business/en/verify-email');
 
         $response->assertStatus(200);
     }

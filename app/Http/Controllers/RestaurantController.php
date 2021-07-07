@@ -83,7 +83,7 @@ class RestaurantController extends Controller
 
         Auth::login($user);
 
-        return redirect('/');
+        return redirect(RouteServiceProvider::HOME);
     }
 
     /**

@@ -2,11 +2,13 @@
 URL::defaults(['locale' => \App::getLocale()]);
 
 // Return current route but use locale specified in $locale
-function thisWithLocale($locale) {
-    return route(Route::getCurrentRoute()->action['as'], array_merge(
-        Route::getCurrentRoute()->parameters,
-        compact('locale'),
-    ));
+if (!function_exists('thisWithLocale')) {
+    function thisWithLocale($locale) {
+        return route(Route::getCurrentRoute()->action['as'], array_merge(
+            Route::getCurrentRoute()->parameters,
+            compact('locale'),
+        ));
+    }
 }
 @endphp
 

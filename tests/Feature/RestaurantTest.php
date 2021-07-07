@@ -2,6 +2,7 @@
 
 namespace Tests\Feature;
 
+use Illuminate\Support\Facades\URL;
 use Illuminate\Foundation\Testing\RefreshDatabase;
 use Illuminate\Foundation\Testing\WithFaker;
 use Tests\TestCase;
@@ -11,16 +12,11 @@ use App\Models\Restaurant;
 class RestaurantTest extends TestCase
 {
     use RefreshDatabase;
-    /**
-     * A basic feature test example.
-     *
-     * @return void
-     */
-    public function test_example()
-    {
-        $response = $this->get('/');
 
-        $response->assertStatus(200);
+    public function setUp(): void
+    {
+        parent::setUp();
+        URL::defaults(['locale' => \App::getLocale()]);
     }
 
     public function test_authorized_restaurant_can_edit()
