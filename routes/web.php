@@ -2,6 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\RestaurantController;
+use App\Http\Controllers\LocaleChangeController;
 
 /*
 |--------------------------------------------------------------------------
@@ -14,21 +15,44 @@ use App\Http\Controllers\RestaurantController;
 |
 */
 
-Route::get('/', [RestaurantController::class, 'index'])
-    ->name('restaurant.index');
-Route::get('/register', [RestaurantController::class, 'create'])
-    ->name('restaurant.create');
-Route::post('/register', [RestaurantController::class, 'store'])
-    ->name('restaurant.store');
-Route::get('/restaurant/{restaurant}', [RestaurantController::class, 'show'])
-    ->name('restaurant.show');
-Route::get('restaurant/{restaurant}/edit', [RestaurantController::class, 'edit'])
-    ->name('restaurant.edit');
-Route::put('restaurant/{restaurant}/edit', [RestaurantController::class, 'update'])
-    ->name('restaurant.update');
+Route::redirect('/', '/home/en');
 
-Route::get('/dashboard', function () {
-    return view('dashboard');
-})->middleware(['auth'])->name('dashboard');
+Route::group([
+    'prefix' => '/home/{locale}',
+], function ($restaurant) {
+    Route::get('/', [RestaurantController::class, 'index'])
+        ->name('restaurant.index');
 
-require __DIR__.'/auth.php';
+    Route::resource('restaurant', RestaurantController::class)
+        ->only(['show', 'edit', 'update']);
+});
+
+Route::group([
+    'prefix' => '/business/dashboard',
+    'middleware' => 'auth',
+], function () {
+    Route::get('/', function () {
+        App::setLocale(Auth::user()->locale);
+        return view('dashboard');
+    })->name('dashboard');
+
+    Route::put('/', LocaleChangeController::class)->name('change-locale');
+
+    require __DIR__.'/user-auth.php';
+});
+
+Route::group([
+    'prefix' => '/business/{locale}',
+], function () {
+    Route::get('/', function () {
+        return view('business-home');
+    });
+
+    Route::get('/register', [RestaurantController::class, 'create'])
+        ->name('restaurant.create');
+
+    Route::post('/register', [RestaurantController::class, 'store'])
+        ->name('restaurant.store');
+
+    require __DIR__.'/guest-auth.php';
+});

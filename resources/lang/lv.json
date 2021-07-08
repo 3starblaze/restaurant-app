@@ -1,12 +1,22 @@
 {
-    "Name": "Vārds",
-    "Email": "Epasts",
-    "Password": "Parole",
+    "Business": "Bizness",
     "Confirm Password": "Apstipriniet Paroli",
-    "Remember me": "Atcerēties mani",
+    "Dashboard": "Kontrolpanelis",
+    "Edit": "Rediģēt",
+    "Edit restaurant": "Rediģēt restorānu",
+    "Email": "Epasts",
     "Forgot your password?": "Aizmirsāt paroli?",
+    "Language": "Valoda",
     "Log in": "Ienākt",
+    "Log Out": "Iziet",
+    "Name": "Vārds",
+    "Password": "Parole",
+    "Remember me": "Atcerēties mani",
     "Register": "Reģistrēties",
+    "Register now": "Reģistrējieties tagad",
+    "Restaurant": "Restorāns",
+    "Restaurants": "Restorāni",
     "Restaurant name": "Restorāna nosaukums",
-    "Restaurant description": "Restorāna apraksts"
+    "Restaurant description": "Restorāna apraksts",
+    "Submit": "Iesūtīt"
 }

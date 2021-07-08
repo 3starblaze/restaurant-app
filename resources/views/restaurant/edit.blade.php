@@ -1,7 +1,7 @@
 <x-app-layout>
     <x-slot name="header">{{ __('Edit restaurant') }}</x-slot>
     <form method="POST" class="m-5"
-          action="{{ route('restaurant.edit', compact('restaurant')) }}">
+          action="{{ route('restaurant.update', compact('restaurant')) }}">
         @csrf
         @method('PUT')
 
@@ -19,6 +19,6 @@
         <textarea name="description" class="block">
             {{  $restaurant->description }}
         </textarea>
-        <x-button class="mt-5">Submit</x-button>
+        <x-button class="mt-5">{{ __('Submit') }}</x-button>
     </form>
 </x-app-layout>

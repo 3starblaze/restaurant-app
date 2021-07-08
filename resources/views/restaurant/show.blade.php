@@ -4,7 +4,7 @@
         @can('update', $restaurant)
         <a href="{{ route('restaurant.edit', compact('restaurant')) }}"
            class="text-gray-400">
-            (Edit)
+            ({{ __('Edit')  }})
         </a>
         @endcan
     </x-slot>
