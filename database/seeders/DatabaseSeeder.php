@@ -2,6 +2,7 @@
 
 namespace Database\Seeders;
 
+use App\Models\User;
 use Illuminate\Database\Seeder;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Hash;
@@ -16,15 +17,19 @@ class DatabaseSeeder extends Seeder
     public function run()
     {
         // For now it's just a normal user
-        $adminUser = \App\Models\User::factory()->create([
-            'name' => 'Admin',
-            'email' => 'admin@admin.com',
-            'password' => Hash::make('admin'),
-        ]);
-        \App\Models\Restaurant::factory()->create([
-            'user_id' => $adminUser,
-            'name' => 'Adminifoods',
-        ]);
+        if (! User::where('email', 'admin@admin.com')) {
+            $adminUser = \App\Models\User::factory()->create([
+                'name' => 'Admin',
+                'email' => 'admin@admin.com',
+                'password' => Hash::make('admin'),
+            ]);
+
+            \App\Models\Restaurant::factory()->create([
+                'user_id' => $adminUser,
+                'name' => 'Adminifoods',
+            ]);
+        }
+
         \App\Models\Restaurant::factory(10)->create();
     }
 }
