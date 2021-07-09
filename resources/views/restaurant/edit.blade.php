@@ -5,7 +5,9 @@
         @csrf
         @method('PUT')
 
-        <x-map-block :lat="$restaurant->latitude" :lng="$restaurant->longitude">
+        <x-map-block :lat="$restaurant->latitude"
+                     :lng="$restaurant->longitude"
+                     zoom="close">
             <!-- Old location marker -->
             L.marker({
               lat: {{ $restaurant->latitude }},
