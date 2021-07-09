@@ -6,12 +6,14 @@
         @method('PUT')
 
         <x-map-block>
+            <!-- Old location marker -->
             L.marker({
               lat: {{ $restaurant->latitude }},
               lng: {{ $restaurant->longitude }},
-            }, { opacity: 0.5 }).addTo(mymap);
+            }, { opacity: 0.5 }).addTo(map);
 
-            mainMarker.update({{ $restaurant->latitude }}, {{  $restaurant->longitude }});
+            <!-- Put the current marker in the old location -->
+            mainMarker.update({{ $restaurant->latitude }}, {{ $restaurant->longitude }});
         </x-map-block>
         <x-label name="name">Name</x-label>
         <x-input name="name" value="{{ $restaurant->name }}"></x-input>
