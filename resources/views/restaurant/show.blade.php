@@ -14,7 +14,9 @@
         <div class="sm:flex-1">
             <!-- Style attribute makes the map a perfect square -->
             <x-map style="height:0;width:100%;padding-bottom:100%;"
-                   :lat="$restaurant->latitude" :lng="$restaurant->longitude">
+                   :lat="$restaurant->latitude"
+                   :lng="$restaurant->longitude"
+                   zoom="close">
                 L.marker({
                     lat: {{ $restaurant->latitude }},
                     lng: {{ $restaurant->longitude }},

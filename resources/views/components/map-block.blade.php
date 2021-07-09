@@ -1,5 +1,13 @@
 @props(['lat' => 56.9566, 'lng' => 24.1315, 'zoom' => 13])
 
+@php
+switch ($zoom) {
+    case 'close':
+        $zoom = 17;
+        break;
+}
+@endphp
+
 <div>
     <div id="map" class="h-80 w-full"></div>
     <div class="inline-block flex">
