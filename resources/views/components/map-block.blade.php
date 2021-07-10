@@ -9,7 +9,7 @@ switch ($zoom) {
 @endphp
 
 <div>
-    <div id="map" class="h-80 w-full"></div>
+    <div id="map" class="h-80 w-full" {{ $attributes }}></div>
     <div class="inline-block flex">
         <p class="mr-5">{{ __('Latitude') }}: <em id="map-latitude">none</em></p>
         <p>{{ __('Longitude') }}: <em id="map-longitude">none</em></p>
