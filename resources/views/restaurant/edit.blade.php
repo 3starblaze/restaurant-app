@@ -21,10 +21,12 @@
                 mainMarker.update({{ $restaurant->latitude }}, {{ $restaurant->longitude }});
             </x-map-block>
             <div class="w-full sm:flex-1 sm:min-h-full sm:flex sm:flex-col">
-                <x-label name="name">Name</x-label>
+                <x-label name="name">{{ __('Name') }}</x-label>
                 <x-input name="name" value="{{ $restaurant->name }}"
                          class="w-full"></x-input>
-                <x-label name="description" class="mt-3">Description</x-label>
+                <x-label name="description" class="mt-3">
+                    {{  __('Description')}}
+                </x-label>
                 <x-textarea name="description"
                             class="block w-full sm:flex-1">
                     {{  $restaurant->description }}
