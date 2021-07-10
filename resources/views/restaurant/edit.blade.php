@@ -20,9 +20,9 @@
         <x-label name="name">Name</x-label>
         <x-input name="name" value="{{ $restaurant->name }}"></x-input>
         <x-label name="description">Description</x-label>
-        <textarea name="description" class="block">
+        <x-textarea name="description" class="block">
             {{  $restaurant->description }}
-        </textarea>
+        </x-textarea>
         <x-button class="mt-5">{{ __('Submit') }}</x-button>
     </form>
 </x-app-layout>
