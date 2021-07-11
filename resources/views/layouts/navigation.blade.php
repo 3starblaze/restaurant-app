@@ -91,9 +91,9 @@ if (!function_exists('thisWithLocale')) {
                             @csrf
                             @method('PUT')
 
-                            <x-dropdown-link>
+                            <x-dropdown-link class="flex gap-2 items-center">
                                 <label for="locale">{{ __('Language') }}</label>
-                                <select name="locale">
+                                <x-select name="locale" class="flex-1">
                                     @foreach(getDefinedLocales() as $locale)
                                         <option value="{{ $locale }}"
                                                 onclick="event.preventDefault(); this.closest('form').submit();"
@@ -101,7 +101,7 @@ if (!function_exists('thisWithLocale')) {
                                             {{ $locale }}
                                         </option>
                                     @endforeach
-                                </select>
+                                </x-select>
                             </x-dropdown-link>
                         </form>
                     </x-slot>
