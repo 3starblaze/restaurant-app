@@ -1,7 +1,12 @@
-@props(['disabled' => false])
+@props(['disabled' => false, 'type' => 'text'])
 
 <input {{ $disabled ? 'disabled' : '' }}
+type="{{ $type }}"
 {!! $attributes->merge([
-    'type' => 'text',
-    'class' => getDefaultInputAttributes()])
+    'class' => ($type == 'checkbox')
+    ? implode(' ', [
+        getBaseInputAttributes(),
+        'text-primary-500',
+        'rounded',
+    ]) : getDefaultInputAttributes()])
 !!}>
