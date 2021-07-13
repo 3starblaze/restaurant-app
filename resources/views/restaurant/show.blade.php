@@ -1,9 +1,9 @@
 <x-app-layout>
     <x-slot name="header">
-        {{ __('Restaurant') }} {{ $restaurant->name }}
+        <span class="text-primary-600 text-md">{{ __('Restaurant') }}</span> {{ $restaurant->name }}
         @can('update', $restaurant)
         <a href="{{ route('restaurant.edit', compact('restaurant')) }}"
-           class="text-gray-400">
+           class="text-gray-400 text-sm">
             ({{ __('Edit')  }})
         </a>
         @endcan
