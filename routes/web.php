@@ -32,7 +32,6 @@ Route::group([
     'middleware' => 'auth',
 ], function () {
     Route::get('/', function () {
-        App::setLocale(Auth::user()->locale);
         return view('dashboard');
     })->name('dashboard');
 
