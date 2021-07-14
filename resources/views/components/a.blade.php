@@ -1,6 +1,6 @@
 <a :href="$href"
    {{ $attributes->merge(['class' => implode(' ', [
-       'text-gray-500',
+       'text-gray-800',
        'underline',
        'hover:text-primary-500',
       ])]) }}>
