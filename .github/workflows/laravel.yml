@@ -8,11 +8,13 @@ on:
 
 jobs:
   env-setup:
-    uses: actions/checkout@v2
-      name: Copy .env
-    run: php -r "file_exists('.env') || copy('.env.example', '.env');"
-      name: Load .env
-      uses: ./.github/actions/dotenv-action
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      - name: Copy .env
+        run: php -r "file_exists('.env') || copy('.env.example', '.env');"
+      - name: Load .env
+        uses: ./.github/actions/dotenv-action
   laravel-tests:
     needs: env-setup
     runs-on: ubuntu-latest
