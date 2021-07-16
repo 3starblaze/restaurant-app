@@ -1,15 +1,5 @@
-@props(['lat' => 56.9566, 'lng' => 24.1315, 'zoom' => 13])
-
-@php
-switch ($zoom) {
-    case 'close':
-        $zoom = 17;
-        break;
-}
-@endphp
-
 <div>
-    <div id="map" class="h-80 w-full"></div>
+    <x-map-utils.bare-map {{ $attributes }} />
     <div class="inline-block flex">
         <p class="mr-5">{{ __('Latitude') }}: <em id="map-latitude">none</em></p>
         <p>{{ __('Longitude') }}: <em id="map-longitude">none</em></p>
@@ -20,16 +10,9 @@ switch ($zoom) {
 
 <script type="text/javascript">
  (() => {
-     const map = L.map('map').setView([{{ $lat }}, {{ $lng }}], {{ $zoom }});
-     L.tileLayer('https://api.mapbox.com/styles/v1/{id}/tiles/{z}/{x}/{y}?access_token={accessToken}', {
-         attribution: 'Map data &copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors, Imagery © <a href="https://www.mapbox.com/">Mapbox</a>',
-         maxZoom: 18,
-         id: 'mapbox/streets-v11',
-         tileSize: 512,
-         zoomOffset: -1,
-         accessToken: '{{ env('MAP_PUBLIC_TOKEN')  }}',
-     }).addTo(map);
+     <x-map-utils.map-setup {{ $attributes }} />
 
+     // Marker selection funcionality
      class MarkerInfo {
          update(lat, lng) {
              if (this.markerObj) map.removeLayer(this.markerObj);

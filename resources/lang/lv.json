@@ -2,13 +2,16 @@
     "Business": "Bizness",
     "Confirm Password": "Apstipriniet Paroli",
     "Dashboard": "Kontrolpanelis",
+    "Description": "Apraksts",
     "Edit": "Rediģēt",
     "Edit restaurant": "Rediģēt restorānu",
     "Email": "Epasts",
     "Forgot your password?": "Aizmirsāt paroli?",
     "Language": "Valoda",
+    "Latitude": "Platums",
     "Log in": "Ienākt",
     "Log Out": "Iziet",
+    "Longitude": "Garums",
     "Name": "Vārds",
     "Password": "Parole",
     "Remember me": "Atcerēties mani",
@@ -18,5 +21,6 @@
     "Restaurants": "Restorāni",
     "Restaurant name": "Restorāna nosaukums",
     "Restaurant description": "Restorāna apraksts",
-    "Submit": "Iesūtīt"
+    "Submit": "Iesūtīt",
+    "Your restaurant": "Jūsu restorāns"
 }

@@ -1,5 +1,4 @@
-<x-app-layout>
-    <x-slot name="header">{{ __('Password reset') }}</x-slot>
+<x-bare-layout>
     <x-auth-card>
         <x-slot name="logo">
             <a href="/">
@@ -46,4 +45,4 @@
             </div>
         </form>
     </x-auth-card>
-</x-app-layout>
+</x-bare-layout>

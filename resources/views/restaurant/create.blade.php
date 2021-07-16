@@ -35,9 +35,9 @@
         </div>
         <div class="mt-4">
             <x-label name="restaurant-description">{{ __('Restaurant description') }}</x-label>
-            <textarea class="w-full" name="restaurant-description">
+            <x-textarea class="w-full" name="restaurant-description">
                 {{  old('restaurant-description') }}
-            </textarea>
+            </x-textarea>
         </div>
         <div class="flex justify-end">
             <x-button class="mt-5">{{ __('Register') }}</x-button>
