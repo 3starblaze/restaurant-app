@@ -101,4 +101,23 @@ class RestaurantTest extends TestCase
              ->assertStatus(200)
              ->assertDontSeeText(__('Edit'));
     }
+
+    public function test_unapproved_restaurant_is_not_in_index()
+    {
+        $restaurant = Restaurant::factory(['name' => 'Cafe Incognito'])
+                    ->unapproved()
+                    ->create();
+
+        $this->get(route('restaurant.index'))
+            ->assertDontSeeText('Cafe Incognito');
+    }
+
+    public function test_approved_restaurant_is_in_index()
+    {
+        $restaurant = Restaurant::factory(['name' => 'Beds and food'])
+                    ->create();
+
+        $this->get(route('restaurant.index'))
+            ->assertSeeText('Beds and food');
+    }
 }

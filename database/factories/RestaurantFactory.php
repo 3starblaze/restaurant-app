@@ -46,4 +46,18 @@ class RestaurantFactory extends Factory
             ];
         });
     }
+
+    /**
+     * Indicate that the model should be unapproved.
+     *
+     * @return \Illuminate\Database\Eloquent\Factories\Factory
+     */
+    public function unapproved()
+    {
+        return $this->state(function (array $attributes) {
+            return [
+                'approved_at' => null,
+            ];
+        });
+    }
 }

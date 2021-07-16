@@ -31,7 +31,7 @@ class RestaurantController extends Controller
     public function index()
     {
         return view('restaurant.index', [
-            'restaurants' => Restaurant::all(),
+            'restaurants' => Restaurant::where('approved_at', '!=', null)->get(),
         ]);
     }
 
