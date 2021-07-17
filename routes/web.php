@@ -25,6 +25,10 @@ Route::group([
 
     Route::resource('restaurant', RestaurantController::class)
         ->only(['show', 'edit', 'update']);
+
+    Route::get('/legal', function () {
+        return view('legal');
+    })->name('legal');
 });
 
 Route::group([
