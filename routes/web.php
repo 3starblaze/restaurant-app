@@ -29,6 +29,13 @@ Route::group([
     Route::get('/legal', function () {
         return view('legal');
     })->name('legal');
+
+    Route::get('faq/approval', function () {
+        if (App::getLocale() == 'lv') {
+            return view('faq.approval.lv');
+        }
+        return view('faq.approval.en');
+    })->name('faq.approval');
 });
 
 Route::group([
