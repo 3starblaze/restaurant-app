@@ -9,7 +9,7 @@
 <blockquote class="bg-gray-50 p-5 shadow-md">
     <h3 class="mb-3">MIT License</h3>
 
-    <p class="mb-3">Copyright © 2020 &lt;Refactoring UI Inc.&gt;</p>
+    <p class="mb-3">Copyright © 2020 Refactoring UI Inc.</p>
 
     <p class="mb-3">Permission is hereby granted, free of charge, to any person obtaining a copy
         of this software and associated documentation files (the “Software”), to deal
