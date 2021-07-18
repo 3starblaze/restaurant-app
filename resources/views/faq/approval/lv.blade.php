@@ -13,6 +13,6 @@
     </ul>
 
     <x-h2>Kā es varu apstiprināt savu restorānu?</x-h2>
-    <p>Sūtiet mums epastu<x-a href="mailto:support@foo.com">support@foo.com</x-a>
+    <p>Sūtiet mums epastu <x-a href="mailto:support@foo.com">support@foo.com</x-a>
         ar pierādījumu, kas apliecina Jūsu piederību restorānam un mēs atbildēsim darbadienā, 24-stundu laikā.</p>
 </x-app-layout>
