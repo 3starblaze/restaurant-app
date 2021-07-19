@@ -1,6 +1,10 @@
 <x-app-layout>
     <x-slot name="header">
         <span class="text-primary-600 text-md">{{ __('Restaurant') }}</span> {{ $restaurant->name }}
+        @if ($restaurant->approved_at == null)
+            <x-warning-icon :title="__('Your restaurant is not approved')" />
+        @endif
+
         @can('update', $restaurant)
         <a href="{{ route('restaurant.edit', compact('restaurant')) }}"
            class="text-gray-400 text-sm">

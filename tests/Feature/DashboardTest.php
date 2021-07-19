@@ -45,4 +45,28 @@ class DashboardTest extends TestCase
         $user->refresh();
         $this->assertSame($user->locale, 'lv');
     }
+
+    public function test_user_can_see_restaurant()
+    {
+        $restaurant = Restaurant::factory()->create();
+        $this->actingAs($restaurant->user)
+            ->get('/business/dashboard')
+            ->assertSeeText(__('Your restaurant'));
+    }
+
+    public function test_unapproved_restaurant_cannot_see_unapproved_warning()
+    {
+        $restaurant = Restaurant::factory()->create();
+        $this->actingAs($restaurant->user)
+            ->get('/business/dashboard')
+            ->assertDontSeeText(__('Your restaurant is not approved'));
+    }
+
+    public function test_unapproved_restaurant_can_see_unapproved_warning()
+    {
+        $restaurant = Restaurant::factory()->unapproved()->create();
+        $this->actingAs($restaurant->user)
+            ->get('/business/dashboard')
+            ->assertSeeText(__('Your restaurant is not approved'));
+    }
 }

@@ -10,9 +10,11 @@ class RestaurantPolicy
 {
     use HandlesAuthorization;
 
-    private function restaurantBelongsToUser(User $user, Restaurant $restaurant)
+    private function restaurantBelongsToUser(?User $user, Restaurant $restaurant)
     {
-        return $restaurant->user == $user;
+        return $user
+            ? $restaurant->user == $user
+            : false;
     }
 
     /**
@@ -35,7 +37,8 @@ class RestaurantPolicy
      */
     public function view(?User $user, Restaurant $restaurant)
     {
-        return true;
+        return (($restaurant->approved_at != null) ||
+                ($this->restaurantBelongsToUser($user, $restaurant)));
     }
 
     /**
