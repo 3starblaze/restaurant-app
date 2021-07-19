@@ -10,9 +10,14 @@ $restaurant = Auth::user()->restaurant
     <div class="py-12">
         <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
             <div class="bg-white overflow-hidden shadow-sm sm:rounded-lg">
-                <x-a href="{{ route('restaurant.show', $restaurant) }}">
-                    {{ __('Your restaurant') }}
-                </x-a>
+                <h2>
+                    <x-a href="{{ route('restaurant.show', $restaurant) }}">
+                        {{ __('Your restaurant') }}
+                    </x-a>
+                    @if ($restaurant->approved_at == null)
+                        <x-warning-icon :title="__('Your restaurant is not approved')" />
+                    @endif
+                </h2>
             </div>
         </div>
     </div>

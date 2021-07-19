@@ -29,6 +29,7 @@ class RestaurantFactory extends Factory
             'description' => $this->faker->paragraph(),
             'latitude' => $this->faker->randomFloat(4, 56.9513 - 0.01, 56.9513 + 0.01),
             'longitude' => $this->faker->randomFloat(4, 24.1325 - 0.1, 24.1325 + 0.1),
+            'approved_at' => now(),
         ];
     }
 
@@ -42,6 +43,20 @@ class RestaurantFactory extends Factory
         return $this->state(function (array $attributes) {
             return [
                 'email_verified_at' => null,
+            ];
+        });
+    }
+
+    /**
+     * Indicate that the model should be unapproved.
+     *
+     * @return \Illuminate\Database\Eloquent\Factories\Factory
+     */
+    public function unapproved()
+    {
+        return $this->state(function (array $attributes) {
+            return [
+                'approved_at' => null,
             ];
         });
     }
