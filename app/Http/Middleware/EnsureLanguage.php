@@ -24,9 +24,7 @@ class EnsureLanguage
             $locale = $request->route()->parameter('locale');
             if (!in_array($locale, getDefinedLocales())) {
                 \App::setLocale(config('app.locale'));
-                return redirect(route('restaurant.index', [
-                    'locale' => config('app.locale'),
-                ]))->with(
+                return redirect(thisWithLocale(config('app.locale')))->with(
                     'status',
                     // The language of the flash might be a problem if the
                     // default language is not English

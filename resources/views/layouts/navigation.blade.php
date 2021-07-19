@@ -1,17 +1,3 @@
-@php
-URL::defaults(['locale' => \App::getLocale()]);
-
-// Return current route but use locale specified in $locale
-if (!function_exists('thisWithLocale')) {
-    function thisWithLocale($locale) {
-        return route(Route::getCurrentRoute()->action['as'], array_merge(
-            Route::getCurrentRoute()->parameters,
-            compact('locale'),
-        ));
-    }
-}
-@endphp
-
 <nav x-data="{ open: false }" class="bg-white border-b border-gray-100">
     <!-- Primary Navigation Menu -->
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
