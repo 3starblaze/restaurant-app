@@ -102,14 +102,42 @@ class RestaurantTest extends TestCase
              ->assertDontSeeText(__('Edit'));
     }
 
+    public function test_access_wrong_locale_home()
+    {
+        $this->get('/home/foo')
+             ->assertRedirect('/home/en');
+
+        $this->followingRedirects()
+             ->get('/home/foo')
+             ->assertSeeText('Language foo does not exist!');
+    }
+
+    public function test_access_wrong_locale_restaurant()
+    {
+        $restaurant = Restaurant::factory()->create();
+
+        $this->get(route('restaurant.show', [
+            'restaurant' => $restaurant,
+            'locale' => 'foo',
+        ]))->assertRedirect(route('restaurant.show', [
+            'restaurant' => $restaurant,
+            'locale' => 'en',
+        ]));
+
+        $this->followingRedirects()
+             ->get(route('restaurant.show', [
+                 'restaurant' => $restaurant,
+                 'locale' => 'foo',
+             ]))->assertSeeText('Language foo does not exist!');
+    }
+
     public function test_unapproved_restaurant_is_not_in_index()
     {
         $restaurant = Restaurant::factory(['name' => 'Cafe Incognito'])
                     ->unapproved()
                     ->create();
-
         $this->get(route('restaurant.index'))
-            ->assertDontSeeText('Cafe Incognito');
+             ->assertDontSeeText('Cafe Incognito');
     }
 
     public function test_approved_restaurant_is_in_index()

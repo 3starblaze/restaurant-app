@@ -4,6 +4,13 @@ function getDefinedLocales() {
     return ['en', 'lv'];
 }
 
+function thisWithLocale($locale) {
+    return route(Route::getCurrentRoute()->action['as'], array_merge(
+        Route::getCurrentRoute()->parameters,
+        compact('locale'),
+    ));
+}
+
 function getBaseInputAttributes() {
     return implode(' ', [
         'shadow-sm',
