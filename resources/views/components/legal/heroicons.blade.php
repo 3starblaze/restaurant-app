@@ -2,7 +2,8 @@
 <p class="mb-5">
     Icons:
     (
-    <x-bare-warning-icon class="inline h-5 w-5" title="" />
+    <x-bare.warning-icon class="inline h-5 w-5" title="" />
+    <x-bare.close-button class="inline h-5 w-5" />
     )
 </p>
 
