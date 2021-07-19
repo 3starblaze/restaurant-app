@@ -101,4 +101,14 @@ class RestaurantTest extends TestCase
              ->assertStatus(200)
              ->assertDontSeeText(__('Edit'));
     }
+
+    public function test_access_wrong_locale()
+    {
+        $this->get('/home/foo')
+             ->assertRedirect('/home/en');
+
+        $this->followingRedirects()
+             ->get('/home/foo')
+             ->assertSeeText('Language foo does not exist!');
+    }
 }

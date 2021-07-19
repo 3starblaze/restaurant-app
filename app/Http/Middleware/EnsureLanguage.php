@@ -22,8 +22,19 @@ class EnsureLanguage
             \App::setLocale(Auth::user()->locale);
         } else if ($request->route()->parameter('locale')) {
             $locale = $request->route()->parameter('locale');
-            if (!in_array($locale, getDefinedLocales())) abort(400);
-            \App::setLocale($locale);
+            if (!in_array($locale, getDefinedLocales())) {
+                \App::setLocale(config('app.locale'));
+                return redirect(route('restaurant.index', [
+                    'locale' => config('app.locale'),
+                ]))->with(
+                    'status',
+                    // The language of the flash might be a problem if the
+                    // default language is not English
+                    sprintf('Language %s does not exist!', $locale)
+                );
+            } else {
+                \App::setLocale($locale);
+            }
         }
 
         // This is done here because authenticated user may visit guest routes
