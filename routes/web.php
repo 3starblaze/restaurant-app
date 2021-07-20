@@ -66,3 +66,8 @@ Route::group([
 
     require __DIR__.'/guest-auth.php';
 });
+
+// Is defined here because it should go through web middleware
+Route::fallback(function () {
+    return view('errors.404');
+});

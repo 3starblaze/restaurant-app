@@ -33,6 +33,10 @@ class EnsureLanguage
             } else {
                 \App::setLocale($locale);
             }
+        } else {
+            // Check the previous URL as a last resort
+            $locale = extractUrlLocale(url()->previous());
+            ($locale != null) ? \App::setLocale($locale) : null;
         }
 
         // This is done here because authenticated user may visit guest routes

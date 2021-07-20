@@ -11,6 +11,13 @@ function thisWithLocale($locale) {
     ));
 }
 
+function extractUrlLocale($url) {
+    $matches = [];
+    return (preg_match('/\/home\/([a-zA-Z]+)\/?/', $url, $matches) == 1)
+                                                                   ? $matches[1]
+                                                                   : null;
+}
+
 function getBaseInputAttributes() {
     return implode(' ', [
         'shadow-sm',

@@ -23,5 +23,7 @@
     "Restaurant description": "Restorāna apraksts",
     "Submit": "Iesūtīt",
     "Your restaurant": "Jūsu restorāns",
-    "Your restaurant is not approved": "Jūsu restorāns nav apstiprināts"
+    "Your restaurant is not approved": "Jūsu restorāns nav apstiprināts",
+
+    "misc.404": "Šeit nekā nav..."
 }
