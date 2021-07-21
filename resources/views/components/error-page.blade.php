@@ -1,5 +1,5 @@
 <x-bare-layout class="h-screen w-screen flex bg-gray-100">
-    <div class="m-auto h-1/2 w-1/2 bg-white shadow-sm flex flex-col justify-center items-center">
+    <div class="m-auto h-1/2 w-full bg-white shadow-sm flex flex-col justify-center items-center md:w-3/4 lg:w-1/2">
         <h2 class="text-primary-500 text-3xl font-bold">{{ $errorCode }}</h2>
         <p>{{ $slot }}</p>
 
