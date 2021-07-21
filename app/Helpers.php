@@ -13,9 +13,22 @@ function thisWithLocale($locale) {
 
 function extractUrlLocale($url) {
     $matches = [];
-    return (preg_match('/\/home\/([a-zA-Z]+)\/?/', $url, $matches) == 1)
-                                                                   ? $matches[1]
-                                                                   : null;
+    $url = str_replace(url('/'), '', $url);
+    $regexes = [
+        '/\/home\/([a-zA-Z]+)\/?/',
+        '/\/business\/([a-zA-Z]+)\/?/',
+    ];
+
+    $results = array_map(function($re) use ($url) {
+        $match = [];
+        preg_match($re, $url, $match);
+        return $match[1] ?? null;
+    }, $regexes);
+
+    // Return first non-null result (or null if there's no non-null)
+    return array_reduce($results, function ($lhs, $rhs) {
+        return ($lhs != null) ? $lhs : $rhs;
+    });
 }
 
 function getBaseInputAttributes() {
