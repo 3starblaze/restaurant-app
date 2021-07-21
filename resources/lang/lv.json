@@ -25,5 +25,6 @@
     "Your restaurant": "Jūsu restorāns",
     "Your restaurant is not approved": "Jūsu restorāns nav apstiprināts",
 
-    "misc.404": "Šeit nekā nav..."
+    "misc.404": "Šeit nekā nav...",
+    "misc.403": "Šī darbība nav atļauta"
 }
