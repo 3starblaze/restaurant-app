@@ -39,11 +39,20 @@ class DashboardTest extends TestCase
         $user = User::factory()->create(['locale' => 'en']);
         $restaurant = Restaurant::factory()->create(['user_id' => $user->id]);
         $this->actingAs($restaurant->user)
-             ->put('/business/dashboard', ['locale' => 'lv'])
-             ->assertRedirect('/business/dashboard');
+             ->put('/business/dashboard', ['locale' => 'lv']);
 
         $user->refresh();
         $this->assertSame($user->locale, 'lv');
+    }
+
+    public function test_user_language_change_respects_current_url()
+    {
+        $user = User::factory()->create(['locale' => 'en']);
+        $restaurant = Restaurant::factory()->create(['user_id' => $user->id]);
+        $this->actingAs($restaurant->user)->get('/home/en');
+        $this->put('/business/dashboard', ['locale' => 'lv'])
+             ->assertRedirect('/home/lv');
+
     }
 
     public function test_user_can_see_restaurant()

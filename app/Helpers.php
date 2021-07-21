@@ -11,6 +11,27 @@ function thisWithLocale($locale) {
     ));
 }
 
+function replaceUrlLocale($url, $locale) {
+    $regexes = [
+        '/(\/home\/)[a-zA-Z]+(\/?.*)/',
+        '/(\/business\/)[a-zA-Z]+(\/?.*)/',
+    ];
+
+    if (preg_match('/business\/dashboard/', $url)) return null;
+
+    $results = array_map(function($re) use ($locale, $url) {
+        $match = [];
+        return preg_match($re, $url, $match)
+            ? preg_replace($re, sprintf('$1%s$2', $locale) , $url)
+            : null;
+    }, $regexes);
+
+    // Return first non-null result (or null if there's no non-null)
+    return array_reduce($results, function ($lhs, $rhs) {
+        return ($lhs != null) ? $lhs : $rhs;
+    });
+}
+
 function extractUrlLocale($url) {
     $matches = [];
     $url = str_replace(url('/'), '', $url);
