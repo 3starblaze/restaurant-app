@@ -13,26 +13,26 @@ class ReplaceUrlLocaleTest extends TestCase
         return $this->assertSame(replaceUrlLocale($url, $locale), $expected);
     }
 
-    public function test_change_1()
+    public function test_home()
     {
         $this->assertExtract(
-            'https://www.something.com/home/lv/nothing', 'en',
-            'https://www.something.com/home/en/nothing',
+            '/home/lv', 'en',
+            '/home/en',
         );
     }
 
-    public function test_change_2()
+    public function test_restaurant()
     {
         $this->assertExtract(
-            'https://www.something.com/home/en/somebody', 'lv',
-            'https://www.something.com/home/lv/somebody'
+            '/home/en/restaurant/3', 'lv',
+            '/home/lv/restaurant/3'
         );
     }
 
     public function test_dashboard_url()
     {
         $this->assertExtract(
-            'https://www.something.com/business/dashboard', 'lv',
+            '/business/dashboard', 'lv',
             null);
     }
 

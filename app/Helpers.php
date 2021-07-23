@@ -1,55 +1,35 @@
 <?php
 
+use Illuminate\Routing\RouteUrlGenerator;
+use Illuminate\Routing\UrlGenerator;
+
 function getDefinedLocales() {
     return ['en', 'lv'];
 }
 
-function thisWithLocale($locale) {
-    return route(Route::getCurrentRoute()->action['as'], array_merge(
-        Route::getCurrentRoute()->parameters,
+function replaceUrlLocale($url, $locale) {
+    $route = Route::getRoutes()->match(app('request')->create($url));
+
+    if (!isset($route->parameters()['locale'])) return null;
+
+    $req = app('request');
+    $rug = new RouteUrlGenerator(
+        new UrlGenerator(Route::getRoutes(), $req),
+        $req);
+
+    return $rug->to($route, array_merge(
+        $route->parameters(),
         compact('locale'),
     ));
 }
 
-function replaceUrlLocale($url, $locale) {
-    $regexes = [
-        '/(\/home\/)[a-zA-Z]+(\/?.*)/',
-        '/(\/business\/)[a-zA-Z]+(\/?.*)/',
-    ];
-
-    if (preg_match('/business\/dashboard/', $url)) return null;
-
-    $results = array_map(function($re) use ($locale, $url) {
-        $match = [];
-        return preg_match($re, $url, $match)
-            ? preg_replace($re, sprintf('$1%s$2', $locale) , $url)
-            : null;
-    }, $regexes);
-
-    // Return first non-null result (or null if there's no non-null)
-    return array_reduce($results, function ($lhs, $rhs) {
-        return ($lhs != null) ? $lhs : $rhs;
-    });
+function thisWithLocale($locale) {
+    return replaceUrlLocale(url()->current(), $locale);
 }
 
 function extractUrlLocale($url) {
-    $matches = [];
-    $url = str_replace(url('/'), '', $url);
-    $regexes = [
-        '/\/home\/([a-zA-Z]+)\/?/',
-        '/\/business\/([a-zA-Z]+)\/?/',
-    ];
-
-    $results = array_map(function($re) use ($url) {
-        $match = [];
-        preg_match($re, $url, $match);
-        return $match[1] ?? null;
-    }, $regexes);
-
-    // Return first non-null result (or null if there's no non-null)
-    return array_reduce($results, function ($lhs, $rhs) {
-        return ($lhs != null) ? $lhs : $rhs;
-    });
+    $route = Route::getRoutes()->match(app('request')->create($url));
+    return $route->parameters()['locale'] ?? null;
 }
 
 function getBaseInputAttributes() {
