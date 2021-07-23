@@ -13,16 +13,6 @@ class ExtractUrlLocaleTest extends TestCase
         return $this->assertSame(extractUrlLocale($parameter), $expected);
     }
 
-    public function test_1()
-    {
-        $this->assertExtract('/home/lv/nothing', 'lv');
-    }
-
-    public function test_2()
-    {
-        $this->assertExtract('/home/en/absolutely/nothing', 'en');
-    }
-
     public function test_no_trailing_slash()
     {
         $this->assertExtract('/home/lv', 'lv');
@@ -36,5 +26,10 @@ class ExtractUrlLocaleTest extends TestCase
     public function test_business_route_no_trailing_slash()
     {
         $this->assertExtract('/business/en', 'en');
+    }
+
+    public function test_route_with_no_language()
+    {
+        $this->assertExtract('business/dashboard', null);
     }
 }
