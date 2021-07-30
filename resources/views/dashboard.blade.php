@@ -21,4 +21,14 @@ $restaurant = Auth::user()->restaurant
             </div>
         </div>
     </div>
+
+    <div class="py-12">
+        <h2>
+            @if ($restaurant->approved_at == null)
+                <x-a href="{{ route('reservations.index', compact('restaurant')) }}">
+                    {{ __('Your reservations') }}
+                </x-a>
+            @endif
+        </h2>
+    </div>
 </x-app-layout>
