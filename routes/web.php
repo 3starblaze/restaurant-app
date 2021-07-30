@@ -1,8 +1,10 @@
 <?php
 
+use App\Http\Controllers\BookingController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\RestaurantController;
 use App\Http\Controllers\LocaleChangeController;
+use App\Http\Controllers\ReservationController;
 
 /*
 |--------------------------------------------------------------------------
@@ -70,4 +72,14 @@ Route::group([
 // Is defined here because it should go through web middleware
 Route::fallback(function () {
     return view('errors.404');
+});
+
+// Reservations
+Route::prefix('/business/dashboard/restaurant/{restaurant}')->group(function () { ///{id}
+    Route::resource('reservations', ReservationController::class);
+});
+
+// Bookings
+Route::prefix('/home/{locale}/restaurant/{id}')->group(function () {
+    Route::resource('bookings', BookingController::class);
 });
