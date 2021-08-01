@@ -19,9 +19,9 @@ class CreateBookingsTable extends Migration
             $table->string('name');
             $table->string('phone_number');
             $table->text('notes')->nullable();
-            $table->unsignedBigInteger('reservation_id')->nullable();
-            $table->foreign('reservation_id')->references('id')
-                ->on('reservations')->onDelete('cascade');
+
+            //$table->unsignedBigInteger('reservation_id')->nullable();
+            //$table->foreign('reservation_id')->references('id')->on('reservations')->onDelete('cascade');
         });
     }
 

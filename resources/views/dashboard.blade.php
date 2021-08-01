@@ -26,6 +26,7 @@ $restaurant = Auth::user()->restaurant
         <h2>
             @if ($restaurant->approved_at == null)
                 <x-a href="{{ route('reservations.index', compact('restaurant')) }}">
+                    {{-- {{ route('reservations.index', compact('restaurant')) }} --}}
                     {{ __('Your reservations') }}
                 </x-a>
             @endif
