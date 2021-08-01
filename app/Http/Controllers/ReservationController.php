@@ -6,6 +6,7 @@ use App\Models\Reservation;
 use App\Models\Restaurant;
 use Illuminate\Database\Eloquent\Builder;
 use App\Providers\RouteServiceProvider;
+use Faker\Provider\Uuid;
 use Illuminate\Http\Request;
 
 class ReservationController extends Controller
@@ -15,16 +16,16 @@ class ReservationController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index($id) //Restaurant $restaurant
+    public function index(Restaurant $restaurant)
     {
         $reservations = Reservation::whereDoesntHave('booking',
-            function (Builder $q) use ($id) { //use ($restaurant)
-                $q->where('restaurant_id', $id); //$restaurant->id
+            function (Builder $q) use ($restaurant) {
+                $q->where('restaurant_id', $restaurant->uuid);
             })->get();
 
         return view('reservations.index', [
             'reservations' => $reservations,
-            //'restaurant' => $restaurant
+            'restaurant' => $restaurant
         ]);
     }
 
@@ -33,9 +34,9 @@ class ReservationController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function create()
+    public function create(Restaurant $restaurant)
     {
-        return view('reservations.create');
+        return view('reservations.create', compact('restaurant'));
     }
 
     /**

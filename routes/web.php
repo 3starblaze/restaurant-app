@@ -75,11 +75,11 @@ Route::fallback(function () {
 });
 
 // Reservations
-Route::prefix('/business/dashboard/restaurant/{restaurant}')->group(function () { ///{id}
+//Route::prefix('/business/dashboard/restaurant/{uuid}')->group(function () { ///{id}
     Route::resource('reservations', ReservationController::class);
-});
+//});
 
 // Bookings
-Route::prefix('/home/{locale}/restaurant/{id}')->group(function () {
+//Route::prefix('/home/{locale}/restaurant/{uuid}')->group(function () {
     Route::resource('bookings', BookingController::class);
-});
+//});
