@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Reservation;
 use App\Models\Restaurant;
 use Illuminate\Database\Eloquent\Builder;
+use Illuminate\Support\Facades\Auth;
 use App\Providers\RouteServiceProvider;
 use Faker\Provider\Uuid;
 use Illuminate\Http\Request;
@@ -16,17 +17,12 @@ class ReservationController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index(Restaurant $restaurant)
+    public function index()
     {
-        $reservations = Reservation::whereDoesntHave('booking',
-            function (Builder $q) use ($restaurant) {
-                $q->where('restaurant_id', $restaurant->uuid);
-            })->get();
+        $restaurant = Auth::user()->restaurant;
+        $reservations = Reservation::where('restaurant_id', $restaurant->id)->get();
 
-        return view('reservations.index', [
-            'reservations' => $reservations,
-            'restaurant' => $restaurant
-        ]);
+        return view('reservations.index', compact('restaurant', 'reservations'));
     }
 
     /**
@@ -34,8 +30,9 @@ class ReservationController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function create(Restaurant $restaurant)
+    public function create()
     {
+        $restaurant = Auth::user()->restaurant;
         return view('reservations.create', compact('restaurant'));
     }
 
@@ -52,15 +49,17 @@ class ReservationController extends Controller
             'end-time' => 'required|date',
             'max-person-count' => 'required|numeric',
             'description' => 'string|nullable',
-            'restaurant-id' => 'required'
+            'restaurant-uuid' => 'required'
         ]);
+
+        $restaurant = Restaurant::where('uuid', $request->input('restaurant-uuid'))->first();
 
         Reservation::create([
             'start_time' => $request->input('start-time'),
             'end_time' => $request->input('end-time'),
             'max_person_count' => $request->input('max-person-count'),
             'description' => $request->input('description'),
-            'restaurant_id' => $request->input('restaurant-id')
+            'restaurant_id' => $restaurant->id,
         ]);
 
         return redirect()->route('reservations.index');

@@ -4,7 +4,7 @@
     </x-slot>
 
     <div class="flex justify-start">
-        <x-a href="{{ route('reservations.create', compact('restaurant')) }}" class="mt-5 mb-10">Create new</x-a> <!-- , compact('restaurant') -->
+        <x-a href="{{ route('reservations.create') }}" class="mt-5 mb-10">Create new</x-a>
     </div>
 
     @forelse ($reservations as $reservation)
