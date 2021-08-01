@@ -18,18 +18,15 @@ $restaurant = Auth::user()->restaurant
                         <x-warning-icon :title="__('Your restaurant is not approved')" />
                     @endif
                 </h2>
+
+                @if ($restaurant->approved_at !== null)
+                    <h2>
+                        <x-a href="{{ route('reservations.index', compact('restaurant')) }}">
+                            {{ __('Your reservations') }}
+                        </x-a>
+                    </h2>
+                @endif
             </div>
         </div>
-    </div>
-
-    <div class="py-12">
-        <h2>
-            @if ($restaurant->approved_at == null)
-                <x-a href="{{ route('reservations.index', compact('restaurant')) }}">
-                    {{-- {{ route('reservations.index', compact('restaurant')) }} --}}
-                    {{ __('Your reservations') }}
-                </x-a>
-            @endif
-        </h2>
     </div>
 </x-app-layout>

@@ -32,6 +32,8 @@ Route::group([
         return view('legal');
     })->name('legal');
 
+    Route::resource('bookings', BookingController::class);
+
     Route::get('faq/approval', function () {
         if (App::getLocale() == 'lv') {
             return view('faq.approval.lv');
@@ -49,6 +51,8 @@ Route::group([
     })->name('dashboard');
 
     Route::put('/', LocaleChangeController::class)->name('change-locale');
+
+    Route::resource('reservations', ReservationController::class);
 
     require __DIR__.'/user-auth.php';
 });
@@ -73,13 +77,3 @@ Route::group([
 Route::fallback(function () {
     return view('errors.404');
 });
-
-// Reservations
-//Route::prefix('/business/dashboard/restaurant/{uuid}')->group(function () { ///{id}
-    Route::resource('reservations', ReservationController::class);
-//});
-
-// Bookings
-//Route::prefix('/home/{locale}/restaurant/{uuid}')->group(function () {
-    Route::resource('bookings', BookingController::class);
-//});
