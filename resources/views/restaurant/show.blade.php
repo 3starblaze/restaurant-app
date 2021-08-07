@@ -28,4 +28,12 @@
             </x-map>
         </div>
     </div>
+    <x-h2>{{ __('Available reservations') }}</x-h2>
+    <div>
+        <ul>
+            @foreach ($restaurant->reservations as $reservation)
+                <x-reservations.card :reservation="$reservation" />
+            @endforeach
+        </ul>
+    </div>
 </x-app-layout>
