@@ -17,11 +17,11 @@ class ReservationController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index(Restaurant $restaurant)
+    public function index()
     {
-        $reservations = $restaurant->reservations;
+        $reservations = Reservation::all();
 
-        return view('reservations.index', compact('restaurant', 'reservations'));
+        return view('reservations.index', compact('reservations'));
     }
 
     /**

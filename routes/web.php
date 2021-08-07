@@ -28,7 +28,7 @@ Route::group([
     Route::resource('restaurant', RestaurantController::class)
         ->only(['show', 'edit', 'update']);
 
-    Route::resource('restaurant.reservation', ReservationController::class);
+    Route::resource('reservations', ReservationController::class);
 
     Route::get('/legal', function () {
         return view('legal');
@@ -53,8 +53,6 @@ Route::group([
     })->name('dashboard');
 
     Route::put('/', LocaleChangeController::class)->name('change-locale');
-
-    Route::resource('reservations', ReservationController::class);
 
     require __DIR__.'/user-auth.php';
 });
