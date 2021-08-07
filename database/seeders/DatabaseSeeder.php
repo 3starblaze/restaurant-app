@@ -26,25 +26,12 @@ class DatabaseSeeder extends Seeder
                 'password' => Hash::make('admin'),
             ]);
 
-            Restaurant::factory()->create([
+            Restaurant::factory()->hasReservations(10)->create([
                 'user_id' => $adminUser,
                 'name' => 'Adminifoods',
             ]);
-
-            // Can't use factory output. restaurant does not have an ID there
-            $restaurant = $adminUser->restaurant;
-
-            Reservation::factory(10)->create([
-                'restaurant_id' => $restaurant,
-            ]);
         }
 
-        $restaurants = Restaurant::factory(10)->create();
-        $restaurants = $restaurants->fresh();
-        foreach($restaurants as $restaurant) {
-            Reservation::factory(10)->create([
-                'restaurant_id' => $restaurant,
-            ]);
-        }
+        Restaurant::factory(10)->hasReservations(10)->create();
     }
 }

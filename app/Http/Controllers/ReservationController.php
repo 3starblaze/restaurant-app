@@ -17,10 +17,9 @@ class ReservationController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Restaurant $restaurant)
     {
-        $restaurant = Auth::user()->restaurant;
-        $reservations = Reservation::where('restaurant_id', $restaurant->id)->get();
+        $reservations = $restaurant->reservations;
 
         return view('reservations.index', compact('restaurant', 'reservations'));
     }

@@ -34,7 +34,7 @@ class ReservationFactory extends Factory
             'end_time' => (clone $baseDate)->add($delta),
             'max_person_count' => $this->faker->numberBetween(1, 4),
             'description' => $this->faker->paragraph(),
-            'restaurant_id' => Restaurant::factory()->create(),
+            'restaurant_id' => function () { return Restaurant::factory()->create(); },
         ];
     }
 }

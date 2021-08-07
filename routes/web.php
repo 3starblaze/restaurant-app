@@ -28,6 +28,8 @@ Route::group([
     Route::resource('restaurant', RestaurantController::class)
         ->only(['show', 'edit', 'update']);
 
+    Route::resource('restaurant.reservation', ReservationController::class);
+
     Route::get('/legal', function () {
         return view('legal');
     })->name('legal');
