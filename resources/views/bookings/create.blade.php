@@ -24,4 +24,13 @@
             <x-button class="mt-5">{{ __('Submit') }}</x-button>
         </div>
     </form>
+
+    <div class="max-w-md mx-auto">
+        <x-h2 class="mb-2">
+            <x-a :href="route('restaurant.show', $reservation->restaurant)">
+                {{ $reservation->restaurant->name }}
+            </x-a>
+        </x-h2>
+        <x-reservations.card :reservation="$reservation" />
+    </div>
 </x-app-layout>
