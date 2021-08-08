@@ -3,7 +3,7 @@
     <x-auth-validation-errors class="mb-4" :errors="$errors" />
 
     <form class="m-5 max-w-md mx-auto"
-          method="POST" action="{{ route('bookings.store') }}">
+          method="POST" action="{{ route('bookings.store', compact('reservation')) }}">
         @csrf
         <div class="mt-4">
             <x-label name="name">{{ __('Name') }}</x-label>

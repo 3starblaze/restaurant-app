@@ -1,6 +1,6 @@
 <div {{ $attributes->merge(['class' => 'max-w-xl']) }}>
     <x-h2>
-        <x-a href="{{ route('reservations.show', compact('reservation')) }}">
+        <x-a href="{{ route('bookings.create', compact('reservation')) }}">
     {{ $reservation->start_time }} - {{ $reservation->end_time }}
         </x-a>
     </x-h2>

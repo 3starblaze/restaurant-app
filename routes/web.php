@@ -29,12 +29,19 @@ Route::group([
         ->only(['show', 'edit', 'update']);
 
     Route::resource('reservations', ReservationController::class);
+    Route::get('reservations/show/{reservation}/book',
+               [BookingController::class, 'create'])
+        ->name('bookings.create');
+    Route::post('reservations/show/{reservation}/book',
+               [BookingController::class, 'store'])
+        ->name('bookings.store');
+    Route::get('bookings/show/{booking}',
+               [BookingController::class, 'show'])
+        ->name('bookings.show');
 
     Route::get('/legal', function () {
         return view('legal');
     })->name('legal');
-
-    Route::resource('bookings', BookingController::class);
 
     Route::get('faq/approval', function () {
         if (App::getLocale() == 'lv') {
