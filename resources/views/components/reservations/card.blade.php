@@ -4,6 +4,9 @@
     {{ $reservation->start_time }} - {{ $reservation->end_time }}
         </x-a>
     </x-h2>
-    <p>{{ __('Guest count') }}: {{ $reservation->max_person_count }}</p>
+    <div class="flex items-center">
+        <x-bare.user-icon class="text-primary-500 h-5 inline" />
+        <p class="inline">{{ $reservation->max_person_count }}</p>
+    </div>
     <p>{{ __('Description') }}: {{ $reservation->description }}</p>
 </div>
