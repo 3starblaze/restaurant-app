@@ -44,18 +44,28 @@ class ReservationController extends Controller
     public function store(Request $request)
     {
         $request->validate([
-            'start-time' => 'required|date',
-            'end-time' => 'required|date',
+            'start-day' => 'required|date_format:Y-m-d',
+            'start-time' => 'required|date_format:H:i',
+            'duration' => 'required|numeric|gte:0',
             'max-person-count' => 'required|numeric',
             'description' => 'string|nullable',
             'restaurant-uuid' => 'required'
         ]);
 
         $restaurant = Restaurant::where('uuid', $request->input('restaurant-uuid'))->first();
+        $startTime = new \DateTime($request->input('start-time'));
+        $startDateTime = (new \DateTime($request->input('start-day')))
+                       ->setTime(
+                           $startTime->format('H'),
+                           $startTime->format('i'),
+                       );
+        $endDateTime = (clone $startDateTime)->add(
+            new \DateInterval("PT{$request->input('duration')}M")
+        );
 
         Reservation::create([
-            'start_time' => $request->input('start-time'),
-            'end_time' => $request->input('end-time'),
+            'start_time' => $startDateTime,
+            'end_time' => $endDateTime,
             'max_person_count' => $request->input('max-person-count'),
             'description' => $request->input('description'),
             'restaurant_id' => $restaurant->id,
