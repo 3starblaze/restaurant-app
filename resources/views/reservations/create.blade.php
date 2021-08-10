@@ -33,7 +33,6 @@
                 {{  old('description') }}
             </x-textarea>
         </div>
-        <input type="hidden" name="restaurant-uuid" value="{{ $restaurant->uuid }}">
         <div class="flex justify-end">
             <x-button class="mt-5">{{ __('Create') }}</x-button>
         </div>

@@ -60,10 +60,9 @@ class ReservationController extends Controller
             'duration' => 'required|numeric|gte:0',
             'max-person-count' => 'required|numeric',
             'description' => 'string|nullable',
-            'restaurant-uuid' => 'required'
         ]);
 
-        $restaurant = Restaurant::where('uuid', $request->input('restaurant-uuid'))->first();
+        $restaurant = Auth::user()->restaurant;
         $startTime = new \DateTime($request->input('start-time'));
         $startDateTime = (new \DateTime($request->input('start-day')))
                        ->setTime(
