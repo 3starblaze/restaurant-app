@@ -12,6 +12,17 @@ use Illuminate\Http\Request;
 
 class ReservationController extends Controller
 {
+
+    /**
+     * Create the controller instance.
+     *
+     * @return void
+     */
+    public function __construct()
+    {
+        $this->authorizeResource(Reservation::class, 'reservation');
+    }
+
     /**
      * Display a listing of the resource.
      *
