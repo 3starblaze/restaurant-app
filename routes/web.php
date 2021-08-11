@@ -1,8 +1,10 @@
 <?php
 
+use App\Http\Controllers\BookingController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\RestaurantController;
 use App\Http\Controllers\LocaleChangeController;
+use App\Http\Controllers\ReservationController;
 
 /*
 |--------------------------------------------------------------------------
@@ -25,6 +27,17 @@ Route::group([
 
     Route::resource('restaurant', RestaurantController::class)
         ->only(['show', 'edit', 'update']);
+
+    Route::resource('reservations', ReservationController::class);
+    Route::get('reservations/show/{reservation}/book',
+               [BookingController::class, 'create'])
+        ->name('bookings.create');
+    Route::post('reservations/show/{reservation}/book',
+               [BookingController::class, 'store'])
+        ->name('bookings.store');
+    Route::get('bookings/show/{booking}',
+               [BookingController::class, 'show'])
+        ->name('bookings.show');
 
     Route::get('/legal', function () {
         return view('legal');

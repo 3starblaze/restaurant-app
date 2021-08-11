@@ -18,6 +18,14 @@ $restaurant = Auth::user()->restaurant
                         <x-warning-icon :title="__('Your restaurant is not approved')" />
                     @endif
                 </h2>
+
+                @if ($restaurant->approved_at !== null)
+                    <h2>
+                        <x-a href="{{ route('reservations.index') }}">
+                            {{ __('Your reservations') }}
+                        </x-a>
+                    </h2>
+                @endif
             </div>
         </div>
     </div>
