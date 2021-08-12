@@ -3,17 +3,28 @@
         {{ __('Restaurants') }}
     </x-slot>
 
+    <script type="text/javascript">
+     let markers = [];
+     let restaurantUuids = [];
+    </script>
+
+
     <x-map>
+        var m;
         @foreach ($restaurants as $restaurant)
-            L.marker({
-                lat: {{ $restaurant->latitude }},
-                lng: {{ $restaurant->longitude }}
+            m = L.marker({
+            lat: {{ $restaurant->latitude }},
+            lng: {{ $restaurant->longitude }}
             }).addTo(map).bindPopup(
-                '{{ __('Restaurant') }} <a href="{{ route('restaurant.show', $restaurant) }} ">{{ $restaurant->name }}</a>'
+            '{{ __('Restaurant') }} <a href="{{ route('restaurant.show', $restaurant) }} ">{{ $restaurant->name }}</a>'
             );
+
+            markers.push(m);
+            restaurantUuids.push('{{ $restaurant->uuid }}');
         @endforeach
     </x-map>
 
+    <livewire:restaurant-popup />
 
     @forelse ($restaurants as $restaurant)
         <div class="ml-5 mt-5 max-w-xl">
