@@ -1,8 +1,10 @@
-<div>
-    <div>
-        <p>{{ $currentRestaurant?->name }}</p>
-        <p>{{ $currentRestaurant?->description }}</p>
-    </div>
+<div class="mt-5">
+    <x-h2 class="text-primary-500">
+        <x-a :href="$showRoute">
+            {{ $currentRestaurant?->name }}
+        </x-a>
+    </x-h2>
+    <p>{{ $currentRestaurant?->description }}</p>
 
     <script>
      document.addEventListener('livewire:load', function () {

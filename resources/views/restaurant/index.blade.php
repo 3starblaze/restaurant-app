@@ -26,6 +26,8 @@
 
     <livewire:restaurant-popup />
 
+    <hr class="mt-5 mb-8" />
+
     @forelse ($restaurants as $restaurant)
         <div class="ml-5 mt-5 max-w-xl">
             <h2 class="font-bold">

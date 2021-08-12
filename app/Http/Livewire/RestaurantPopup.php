@@ -9,6 +9,7 @@ class RestaurantPopup extends Component
 {
     public $restaurants;
     public $currentRestaurant = null;
+    public $showRoute = '';
 
     public function mount() {
         $this->restaurants = Restaurant::all();
@@ -21,5 +22,6 @@ class RestaurantPopup extends Component
 
     public function setRestaurant(Restaurant $restaurant) {
         $this->currentRestaurant = $restaurant;
+        $this->showRoute = route('restaurant.show', compact('restaurant'));
     }
 }
