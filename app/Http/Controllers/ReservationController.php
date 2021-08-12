@@ -5,27 +5,34 @@ namespace App\Http\Controllers;
 use App\Models\Reservation;
 use App\Models\Restaurant;
 use Illuminate\Database\Eloquent\Builder;
+use Illuminate\Support\Facades\Auth;
 use App\Providers\RouteServiceProvider;
+use Faker\Provider\Uuid;
 use Illuminate\Http\Request;
 
 class ReservationController extends Controller
 {
+
+    /**
+     * Create the controller instance.
+     *
+     * @return void
+     */
+    public function __construct()
+    {
+        $this->authorizeResource(Reservation::class, 'reservation');
+    }
+
     /**
      * Display a listing of the resource.
      *
      * @return \Illuminate\Http\Response
      */
-    public function index($id) //Restaurant $restaurant
+    public function index()
     {
-        $reservations = Reservation::whereDoesntHave('booking',
-            function (Builder $q) use ($id) { //use ($restaurant)
-                $q->where('restaurant_id', $id); //$restaurant->id
-            })->get();
+        $reservations = Reservation::all();
 
-        return view('reservations.index', [
-            'reservations' => $reservations,
-            //'restaurant' => $restaurant
-        ]);
+        return view('reservations.index', compact('reservations'));
     }
 
     /**
@@ -35,7 +42,8 @@ class ReservationController extends Controller
      */
     public function create()
     {
-        return view('reservations.create');
+        $restaurant = Auth::user()->restaurant;
+        return view('reservations.create', compact('restaurant'));
     }
 
     /**
@@ -47,20 +55,32 @@ class ReservationController extends Controller
     public function store(Request $request)
     {
         $request->validate([
-            'start-time' => 'required|date',
-            'end-time' => 'required|date',
+            'start-day' => 'required|date_format:Y-m-d',
+            'start-time' => 'required|date_format:H:i',
+            'duration' => 'required|numeric|gte:0',
             'max-person-count' => 'required|numeric',
             'description' => 'string|nullable',
-            'restaurant-id' => 'required'
         ]);
 
-        Reservation::create([
-            'start_time' => $request->input('start-time'),
-            'end_time' => $request->input('end-time'),
+        $restaurant = Auth::user()->restaurant;
+        $startTime = new \DateTime($request->input('start-time'));
+        $startDateTime = (new \DateTime($request->input('start-day')))
+                       ->setTime(
+                           $startTime->format('H'),
+                           $startTime->format('i'),
+                       );
+        $endDateTime = (clone $startDateTime)->add(
+            new \DateInterval("PT{$request->input('duration')}M")
+        );
+
+        $reservation = [
+            'start_time' => $startDateTime,
+            'end_time' => $endDateTime,
             'max_person_count' => $request->input('max-person-count'),
             'description' => $request->input('description'),
-            'restaurant_id' => $request->input('restaurant-id')
-        ]);
+            'restaurant_id' => $restaurant->id,
+        ];
+        Reservation::create($reservation);
 
         return redirect()->route('reservations.index');
     }

@@ -28,6 +28,17 @@ Route::group([
     Route::resource('restaurant', RestaurantController::class)
         ->only(['show', 'edit', 'update']);
 
+    Route::resource('reservations', ReservationController::class);
+    Route::get('reservations/show/{reservation}/book',
+               [BookingController::class, 'create'])
+        ->name('bookings.create');
+    Route::post('reservations/show/{reservation}/book',
+               [BookingController::class, 'store'])
+        ->name('bookings.store');
+    Route::get('bookings/show/{booking}',
+               [BookingController::class, 'show'])
+        ->name('bookings.show');
+
     Route::get('/legal', function () {
         return view('legal');
     })->name('legal');
@@ -72,14 +83,4 @@ Route::group([
 // Is defined here because it should go through web middleware
 Route::fallback(function () {
     return view('errors.404');
-});
-
-// Reservations
-Route::prefix('/business/dashboard/restaurant/{restaurant}')->group(function () { ///{id}
-    Route::resource('reservations', ReservationController::class);
-});
-
-// Bookings
-Route::prefix('/home/{locale}/restaurant/{id}')->group(function () {
-    Route::resource('bookings', BookingController::class);
 });

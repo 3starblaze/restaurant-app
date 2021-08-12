@@ -17,16 +17,9 @@ class BookingController extends Controller
      * @param  \App\Models\Restaurant  $restaurant
      * @return \Illuminate\Http\Response
      */
-    public function index(Restaurant $restaurant)
+    public function index()
     {
-        $reservations = Reservation::whereDoesntHave('booking',
-            function (Builder $q) use ($restaurant) {
-                $q->where('restaurant_id', $restaurant->id);
-            })->get();
-
-        return view('bookings.index', [
-            'reservations' => $reservations
-        ]);
+        abort(404);
     }
 
     /**
@@ -34,9 +27,9 @@ class BookingController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function create()
+    public function create(Reservation $reservation)
     {
-        return view('bookings.create');
+        return view('bookings.create', compact('reservation'));
     }
 
     /**
@@ -45,23 +38,22 @@ class BookingController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(Reservation $reservation, Request $request)
     {
         $request->validate([
             'name' => 'required|string',
             'phone-number' => 'required|string',
             'notes' => 'string|nullable',
-            'reservation-id' => 'required'
         ]);
 
-        Booking::create([
+        $booking = Booking::create([
             'name' => $request->input('name'),
             'phone_number' => $request->input('phone-number'),
             'notes' => $request->input('notes'),
-            'reservation_id' => $request->input('reservation-id')
+            'reservation_id' => $reservation->id,
         ]);
 
-        return redirect()->route('restaurant.index');
+        return redirect()->route('bookings.show', compact('booking'));
     }
 
     /**
@@ -83,7 +75,7 @@ class BookingController extends Controller
      */
     public function edit(Booking $booking)
     {
-        return view('bookings.edit', compact('booking'));
+        abort(404);
     }
 
     /**
@@ -95,8 +87,7 @@ class BookingController extends Controller
      */
     public function update(Request $request, Booking $booking)
     {
-        $booking->fill($request->all())->save();
-        return redirect()->route('bookings.show', compact('booking'));
+        abort(404);
     }
 
     /**
@@ -107,7 +98,6 @@ class BookingController extends Controller
      */
     public function destroy(Booking $booking)
     {
-        $booking->delete();
-        return redirect()->route('bookings.index');
+        abort(404);
     }
 }

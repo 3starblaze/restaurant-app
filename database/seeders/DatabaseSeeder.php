@@ -3,6 +3,8 @@
 namespace Database\Seeders;
 
 use App\Models\User;
+use App\Models\Restaurant;
+use App\Models\Reservation;
 use Illuminate\Database\Seeder;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Hash;
@@ -18,18 +20,18 @@ class DatabaseSeeder extends Seeder
     {
         // For now it's just a normal user
         if (! User::where('email', 'admin@admin.com')->first()) {
-            $adminUser = \App\Models\User::factory()->create([
+            $adminUser = User::factory()->create([
                 'name' => 'Admin',
                 'email' => 'admin@admin.com',
                 'password' => Hash::make('admin'),
             ]);
 
-            \App\Models\Restaurant::factory()->create([
+            Restaurant::factory()->hasReservations(10)->create([
                 'user_id' => $adminUser,
                 'name' => 'Adminifoods',
             ]);
         }
 
-        \App\Models\Restaurant::factory(10)->create();
+        Restaurant::factory(10)->hasReservations(10)->create();
     }
 }

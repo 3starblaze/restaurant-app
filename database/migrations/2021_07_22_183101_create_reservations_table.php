@@ -20,9 +20,9 @@ class CreateReservationsTable extends Migration
             $table->dateTime('end_time');
             $table->integer('max_person_count');
             $table->text('description')->nullable();
-            $table->unsignedBigInteger('restaurant_id');
-            $table->foreign('restaurant_id')->references('id')
-                ->on('restaurants')->onDelete('cascade');
+
+            //$table->unsignedBigInteger('restaurant_id');
+            //$table->foreign('restaurant_id')->references('id')->on('restaurants')->onDelete('cascade');
         });
     }
 

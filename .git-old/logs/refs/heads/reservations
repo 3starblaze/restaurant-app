@@ -1,0 +1,5 @@
+0000000000000000000000000000000000000000 cb88ab512f96a0f14dfc45636f8ff8f35957c994 Rico <ricardsliskovskis@gmail.com> 1626896496 +0100	branch: Created from master
+cb88ab512f96a0f14dfc45636f8ff8f35957c994 ee9258d2efe4147e960ad4874a3f5d6deefbce81 Rico <ricardsliskovskis@gmail.com> 1626976906 +0100	rebase finished: refs/heads/reservations onto ee9258d2efe4147e960ad4874a3f5d6deefbce81
+ee9258d2efe4147e960ad4874a3f5d6deefbce81 b532aca5f18f307e32d2464c113271b50994a9b2 Rico <ricardsliskovskis@gmail.com> 1627668843 +0100	commit: Add reservations and booking controllers/views/models
+b532aca5f18f307e32d2464c113271b50994a9b2 aa9022b647aa60bce203f4fe86c53a721007bf1b Rico <ricardsliskovskis@gmail.com> 1627670814 +0100	merge master: Fast-forward
+aa9022b647aa60bce203f4fe86c53a721007bf1b 805aaeb894fb65ddc7c4594fef8fb7b1b60b58d9 liskovich <ricardsliskovskis@gmail.com> 1627809015 +0100	commit: Adjust reservation index/create views

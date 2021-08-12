@@ -1,0 +1,5 @@
+0000000000000000000000000000000000000000 cb88ab512f96a0f14dfc45636f8ff8f35957c994 Rico <ricardsliskovskis@gmail.com> 1626896471 +0100	clone: from https://github.com/liskovich/restaurant-app.git
+cb88ab512f96a0f14dfc45636f8ff8f35957c994 ee9258d2efe4147e960ad4874a3f5d6deefbce81 Rico <ricardsliskovskis@gmail.com> 1626976673 +0100	pull: Fast-forward
+ee9258d2efe4147e960ad4874a3f5d6deefbce81 3f022f2e06024ba1f8db341960e896fa90407d5d Rico <ricardsliskovskis@gmail.com> 1627668874 +0100	pull: Fast-forward
+3f022f2e06024ba1f8db341960e896fa90407d5d aa9022b647aa60bce203f4fe86c53a721007bf1b Rico <ricardsliskovskis@gmail.com> 1627668985 +0100	merge reservations: Merge made by the 'recursive' strategy.
+aa9022b647aa60bce203f4fe86c53a721007bf1b c81f61e018e905c9a4bf825c02960bee55efed87 liskovich <ricardsliskovskis@gmail.com> 1628682317 +0100	commit (merge): Merge branch 'master' of https://github.com/liskovich/restaurant-app

@@ -1,0 +1,4 @@
+# pack-refs with: peeled fully-peeled sorted 
+03079348578a452ee5abb787f872b0ff7f5980fd refs/remotes/origin/3starblaze-patch-1
+cb88ab512f96a0f14dfc45636f8ff8f35957c994 refs/remotes/origin/master
+2ba6f616d3ae4f76ed6f026203e4feb1cf6b7007 refs/remotes/origin/pretty-error

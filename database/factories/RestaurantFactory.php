@@ -24,7 +24,7 @@ class RestaurantFactory extends Factory
     public function definition()
     {
         return [
-            'user_id' => User::factory()->create(),
+            'user_id' => function() { return User::factory()->create(); },
             'name' => $this->faker->word(),
             'description' => $this->faker->paragraph(),
             'latitude' => $this->faker->randomFloat(4, 56.9513 - 0.01, 56.9513 + 0.01),
