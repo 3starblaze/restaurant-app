@@ -9,22 +9,24 @@
     </script>
 
 
-    <x-map>
-        var m;
-        @foreach ($restaurants as $restaurant)
-            m = L.marker({
-            lat: {{ $restaurant->latitude }},
-            lng: {{ $restaurant->longitude }}
-            }).addTo(map).bindPopup(
-            '{{ __('Restaurant') }} <a href="{{ route('restaurant.show', $restaurant) }} ">{{ $restaurant->name }}</a>'
-            );
+    <div class="flex flex-col relative">
+        <x-map>
+            var m;
+            @foreach ($restaurants as $restaurant)
+                m = L.marker({
+                lat: {{ $restaurant->latitude }},
+                lng: {{ $restaurant->longitude }}
+                }).addTo(map).bindPopup(
+                '{{ __('Restaurant') }} <a href="{{ route('restaurant.show', $restaurant) }} ">{{ $restaurant->name }}</a>'
+                );
 
-            markers.push(m);
-            restaurantUuids.push('{{ $restaurant->uuid }}');
-        @endforeach
-    </x-map>
+                markers.push(m);
+                restaurantUuids.push('{{ $restaurant->uuid }}');
+            @endforeach
+        </x-map>
+        <livewire:restaurant-popup />
+    </div>
 
-    <livewire:restaurant-popup />
 
     <hr class="mt-5 mb-8" />
 
