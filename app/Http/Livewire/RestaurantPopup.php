@@ -12,7 +12,8 @@ class RestaurantPopup extends Component
     public $showRoute = '';
 
     public function mount() {
-        $this->restaurants = Restaurant::all();
+        $this->restaurants = Restaurant::all()
+                           ->only(['name', 'description', 'uuid']);
     }
 
     public function render()
@@ -21,7 +22,7 @@ class RestaurantPopup extends Component
     }
 
     public function setRestaurant(Restaurant $restaurant) {
-        $this->currentRestaurant = $restaurant;
+        $this->currentRestaurant = $restaurant->only(['name', 'description', 'uuid']);
         $this->showRoute = route('restaurant.show', compact('restaurant'));
     }
 }

@@ -4,10 +4,10 @@
      style="z-index:9999">
     <x-h2 class="text-primary-500">
         <x-a :href="$showRoute">
-            {{ $currentRestaurant?->name }}
+            {{ $currentRestaurant ? $currentRestaurant['name'] : '' }}
         </x-a>
     </x-h2>
-    <p>{{ $currentRestaurant?->description }}</p>
+    <p>{{ $currentRestaurant ? $currentRestaurant['description'] : '' }}</p>
 
     <script>
      document.addEventListener('livewire:load', function () {
