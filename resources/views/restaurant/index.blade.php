@@ -19,7 +19,6 @@
              marker.setOpacity(1.0);
              currentMarker = marker;
          } else {
-             console.log('hmmm');
              currentMarker.setOpacity(0.5);
              marker.setOpacity(1.0);
              currentMarker = marker;
