@@ -1,4 +1,4 @@
-<div {{ $attributes->merge(['class' => 'max-w-xl']) }}>
+<div {{ $attributes }}>
     <x-h2>
         <x-a href="{{ route('bookings.create', compact('reservation')) }}">
             {{ $reservation->start_time }}

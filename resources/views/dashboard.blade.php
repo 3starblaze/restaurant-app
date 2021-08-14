@@ -10,22 +10,42 @@ $restaurant = Auth::user()->restaurant
     <div class="py-12">
         <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
             <div class="bg-white overflow-hidden shadow-sm sm:rounded-lg">
-                <h2>
-                    <x-a href="{{ route('restaurant.show', $restaurant) }}">
-                        {{ __('Your restaurant') }}
-                    </x-a>
-                    @if ($restaurant->approved_at == null)
-                        <x-warning-icon :title="__('Your restaurant is not approved')" />
-                    @endif
-                </h2>
+                <x-h2 class="mb-5">{{ __('Your reservations') }}</x-h2>
+                <div class="flex gap-10 overflow-auto p-1">
+                    @foreach($restaurant->reservations as $reservation)
+                        <x-reservations.card :reservation="$reservation"
+                                             class="flex-shrink-0 max-w-md inline-block"/>
+                    @endforeach
+                </div>
 
-                @if ($restaurant->approved_at !== null)
-                    <h2>
-                        <x-a href="{{ route('reservations.index') }}">
-                            {{ __('Your reservations') }}
-                        </x-a>
-                    </h2>
-                @endif
+                <x-h2 class="mt-5 mb-3">{{ __('Your bookings') }}</x-h2>
+                <div class="flex flex-row gap-10 overflow-auto p-1">
+                    @foreach($restaurant->bookings as $booking)
+                        <div>
+                            <p class="">{{ $booking->name }}</p>
+                            <p cl1ass="mb-1">{{ $booking['phone_number'] }}</p>
+                            <p class="text-gray-500">{{ $booking->notes }}</p>
+                        </div>
+                    @endforeach
+                </div>
+
+                <x-h2 class="mt-5">{{ __('Billing information') }}</x-h2>
+                <p class="mb-3 text-primary-700">August 2021</p>
+                <p>You have 2 bookings and your total bill is
+                    <em class="text-primary-700">2$</em>
+                </p>
+
+                <x-h2 class="mt-5 mb-3">
+                    {{ __('Your restaurant') }}
+                    <span class="text-gray-800">{{ $restaurant->name }}</span>
+                </x-h2>
+                <x-a :href="route('restaurant.edit', $restaurant)">
+                    {{ __('Edit restaurant') }}
+                </x-a>
+                <x-a :href="route('restaurant.show', $restaurant)">
+                    {{ __('Restaurant page') }}
+                </x-a>
+                <p>{{ $restaurant->description }}</p>
             </div>
         </div>
     </div>

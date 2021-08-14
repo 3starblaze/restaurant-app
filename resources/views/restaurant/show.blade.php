@@ -29,7 +29,7 @@
                 </x-map>
             </div>
         </div>
-        <div>
+        <div class="flex-1">
             <x-h2 class="mt-5">{{ __('Available reservations') }}</x-h2>
             <ul>
                 @foreach ($restaurant->reservations as $reservation)
