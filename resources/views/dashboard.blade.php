@@ -11,15 +11,15 @@ $restaurant = Auth::user()->restaurant
         <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
             <div class="bg-white overflow-hidden shadow-sm sm:rounded-lg">
                 <x-h2 class="mb-5">{{ __('Your reservations') }}</x-h2>
-                <div class="flex gap-10 overflow-auto p-1">
+                <x-side-scroller>
                     @foreach($restaurant->reservations as $reservation)
                         <x-reservations.card :reservation="$reservation"
                                              class="flex-shrink-0 max-w-md inline-block"/>
                     @endforeach
-                </div>
+                </x-side-scroller>
 
                 <x-h2 class="mt-5 mb-3">{{ __('Your bookings') }}</x-h2>
-                <div class="flex flex-row gap-10 overflow-auto p-1">
+                <x-side-scroller>
                     @foreach($restaurant->bookings as $booking)
                         <div>
                             <p class="">{{ $booking->name }}</p>
@@ -27,7 +27,7 @@ $restaurant = Auth::user()->restaurant
                             <p class="text-gray-500">{{ $booking->notes }}</p>
                         </div>
                     @endforeach
-                </div>
+                </x-side-scroller>
 
                 <x-h2 class="mt-5">{{ __('Billing information') }}</x-h2>
                 <p class="mb-3 text-primary-700">August 2021</p>
