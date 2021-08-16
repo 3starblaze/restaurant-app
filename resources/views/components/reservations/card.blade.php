@@ -1,4 +1,4 @@
-<div {{ $attributes }}>
+<x-card {{ $attributes }}>
     <x-h2>
         <x-a href="{{ route('bookings.create', compact('reservation')) }}">
             {{ $reservation->start_time }}
@@ -10,4 +10,4 @@
         <p class="inline">{{ $reservation->max_person_count }}</p>
     </div>
     <p>{{ __('Description') }}: {{ $reservation->description }}</p>
-</div>
+</x-card>

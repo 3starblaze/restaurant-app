@@ -9,23 +9,23 @@ $restaurant = Auth::user()->restaurant
 
     <div class="py-12">
         <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
-            <div class="bg-white overflow-hidden shadow-sm sm:rounded-lg">
+            <div class="overflow-hidden shadow-sm sm:rounded-lg">
                 <x-h2 class="mb-5">{{ __('Your reservations') }}</x-h2>
-                <x-side-scroller>
+                <x-side-scroller class="p-2">
                     @foreach($restaurant->reservations as $reservation)
                         <x-reservations.card :reservation="$reservation"
-                                             class="flex-shrink-0 max-w-md inline-block"/>
+                                             class="flex-shrink-0 w-80"/>
                     @endforeach
                 </x-side-scroller>
 
                 <x-h2 class="mt-5 mb-3">{{ __('Your bookings') }}</x-h2>
                 <x-side-scroller>
                     @foreach($restaurant->bookings as $booking)
-                        <div>
+                        <x-card>
                             <p class="">{{ $booking->name }}</p>
                             <p cl1ass="mb-1">{{ $booking['phone_number'] }}</p>
                             <p class="text-gray-500">{{ $booking->notes }}</p>
-                        </div>
+                        </x-card>
                     @endforeach
                 </x-side-scroller>
 

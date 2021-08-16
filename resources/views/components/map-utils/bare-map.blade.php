@@ -1,1 +1,3 @@
-<div id="map" class="h-80 w-full" {{ $attributes }}></div>
+<div id="map" {{ $attributes->merge(['class' =>
+                 'h-80 w-full']) }}>
+</div>
