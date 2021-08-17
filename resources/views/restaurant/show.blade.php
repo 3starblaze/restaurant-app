@@ -32,9 +32,21 @@
         <div class="flex-1">
             <x-h2 class="mt-5">{{ __('Available reservations') }}</x-h2>
             <ul>
-                @foreach ($restaurant->reservations as $reservation)
-                    <x-reservations.card :reservation="$reservation"
-                                         class="mt-3"/>
+                @php
+                $lastDay = null;
+                @endphp
+                @foreach ($restaurant->reservations->sortBy('start_time') as $reservation)
+                    @if($lastDay === null || $lastDay !== $reservation['start_time']->format('Y-m-d'))
+                        <div class="flex gap-2 mt-5">
+                            <p class="inline-block text-primary-800">{{ $reservation['start_time']->format('Y-m-d') }}</p>
+                            <div class="my-auto inline-block bg-primary-300 h-px w-full"></div>
+                        </div>
+                        @php
+                        $lastDay = $reservation['start_time']->format('Y-m-d')
+                        @endphp
+                    @endif
+                    <x-reservations.minimal-card :reservation="$reservation"
+                                                 class="mt-3 w-full"/>
                 @endforeach
             </ul>
         </div>
