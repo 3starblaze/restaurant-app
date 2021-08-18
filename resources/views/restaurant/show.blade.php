@@ -12,6 +12,7 @@
         </a>
         @endcan
     </x-slot>
+
     <div class="flex flex-col lg:flex-row lg:gap-10">
         <div class="flex flex-col sm:flex-row lg:flex-col">
             <p class="max-w-xl w-full sm:flex-1 lg:flex-none">{{ $restaurant->description }}</p>
@@ -30,25 +31,14 @@
             </div>
         </div>
         <div class="flex-1">
-            <x-h2 class="mt-5">{{ __('Available reservations') }}</x-h2>
-            <ul>
-                @php
-                $lastDay = null;
-                @endphp
-                @foreach ($restaurant->reservations->sortBy('start_time') as $reservation)
-                    @if($lastDay === null || $lastDay !== $reservation['start_time']->format('Y-m-d'))
-                        <div class="flex gap-2 mt-5">
-                            <p class="inline-block text-primary-800">{{ $reservation['start_time']->format('Y-m-d') }}</p>
-                            <div class="my-auto inline-block bg-primary-300 h-px w-full"></div>
-                        </div>
-                        @php
-                        $lastDay = $reservation['start_time']->format('Y-m-d')
-                        @endphp
-                    @endif
-                    <x-reservations.minimal-card :reservation="$reservation"
-                                                 class="mt-3 w-full"/>
-                @endforeach
-            </ul>
+            <script type="text/javascript">
+             const calendarCallback = (info) => {
+                 console.log('calendar callback');
+                 console.log('date', info.start);
+             }
+            </script>
+            <x-calendar class="mt-5 bg-white rounded-md shadow-md" />
+            <livewire:calendar-reservation :restaurant="$restaurant" />
         </div>
     </div>
 </x-app-layout>
