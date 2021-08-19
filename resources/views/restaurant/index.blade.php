@@ -52,13 +52,43 @@
 
     <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-2 mt-5">
         @forelse ($restaurants as $restaurant)
-            <x-card class="">
-                <h2 class="font-bold">
-                    <x-a href="{{ route('restaurant.show', compact('restaurant')) }}">
-                        {{ $restaurant->name }}
-                    </x-a>
-                </h2>
-                <p>{{ $restaurant->description }}</p>
+            <x-card>
+                <div class="p-2">
+                    <div class="flex justify-between">
+                        <div>
+                            <h2 class="font-bold text-lg">
+                                {{ $restaurant->name }}
+                            </h2>
+                            <!-- Flex for removing implicit whitespace -->
+                            <!-- Shift div for finer alignment -->
+                            <div class="flex relative -left-0.5">
+                                @php
+                                $starCount = rand(1, 5);
+                                @endphp
+                                @for ($i = 1; $i <= 5; $i++)
+                                    @if ($i <= $starCount)
+                                        <x-bare.star-icon
+                                            class="h-5 inline-block text-yellow-500" />
+                                    @else
+                                        <x-bare.star-icon
+                                            class="h-5 inline-block text-yellow-200" />
+                                    @endif
+                                @endfor
+                            </div>
+                        </div>
+                        <div class="flex align-center">
+                            <a href="{{ route('restaurant.show', compact('restaurant')) }}"
+                                 class="flex items-center text-primary-500">
+                                <p class="inline-block text-lg">View</p>
+                                <x-bare.chevron-right class="h-10 w-10" />
+                            </a>
+                        </div>
+                    </div>
+                </div>
+                <p class="px-2 mb-2">{{ $restaurant->description }}</p>
+                <img src="/test-images/restaurants/00{{ rand(0, 5) }}.jpg"
+                     alt="restaurant"
+                     class="rounded-b" />
             </x-card>
         @empty
             <p>No restaurants yet.</p>

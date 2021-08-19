@@ -6,7 +6,7 @@
     </div>
     @foreach ($reservations as $reservation)
         <x-reservations.minimal-card :reservation="$reservation"
-                                     class="mt-3 w-full"/>
+                                     class="p-2 mt-3 w-full"/>
     @endforeach
 </div>
 <script type="text/javascript">
