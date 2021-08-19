@@ -1,5 +1,4 @@
 <div class="flex-1">
-    <x-calendar class="mt-5 bg-white rounded-md shadow-md" />
     <x-h2 class="mt-5">{{ __('Available reservations') }}</x-h2>
     <div class="flex gap-2 mt-5">
         <p class="inline-block text-primary-800">{{ $date->format('Y-m-d') }}</p>

@@ -37,7 +37,7 @@
                  console.log('date', info.start);
              }
             </script>
-            <x-calendar class="mt-5 bg-white rounded-md shadow-md" />
+            <x-calendar class="border-t-8 mt-5" />
             <livewire:calendar-reservation :restaurant="$restaurant" />
         </div>
     </div>

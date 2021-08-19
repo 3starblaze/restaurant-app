@@ -1,4 +1,4 @@
-<div id="calendar" {{ $attributes }}></div>
+<x-card id="calendar" {{ $attributes }}></x-card>
 <script>
  document.addEventListener('DOMContentLoaded', function() {
      var calendarEl = document.getElementById('calendar');
@@ -6,7 +6,6 @@
          initialView: 'dayGridMonth',
          selectable: true,
          select(info) {
-             console.log(info.start); // It WORKS!
              Livewire.emit('selected', info.start);
          },
          headerToolbar: {
