@@ -54,7 +54,7 @@
     </x-base>
 
     <x-base>
-        <x-h2 class="mt-5 mb-3">{{ __('Gallery')}}</x-h2>
+        <x-h2>{{ __('Gallery')}}</x-h2>
         <div class="grid grid-rows-2 grid-cols-2 gap-2">
             @for ($i = 0; $i < 4; $i++)
                 <img src="/test-images/restaurants/00{{ rand(0, 5) }}.jpg"
@@ -70,7 +70,7 @@
              console.log('date', info.start);
          }
         </script>
-        <x-h2 class="mt-5 mb-3">{{ __('Reservations') }}</x-h2>
+        <x-h2>{{ __('Reservations') }}</x-h2>
         <x-calendar class="border-t-8" />
         <livewire:calendar-reservation :restaurant="$restaurant" />
     </x-base>

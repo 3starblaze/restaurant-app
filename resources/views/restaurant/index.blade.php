@@ -43,7 +43,7 @@
     </x-base>
 
     <x-base>
-        <x-h2 class="app mt-5 mb-3">{{ __('Restaurants') }}</x-h2>
+        <x-h2>{{ __('Restaurants') }}</x-h2>
     </x-base>
 
     <x-base class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-2">

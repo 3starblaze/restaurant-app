@@ -1,6 +1,6 @@
 <div class="flex-1">
-    <x-h2 class="mt-5">{{ __('Available reservations') }}</x-h2>
-    <div class="flex gap-2 mt-5">
+    <x-h2>{{ __('Available reservations') }}</x-h2>
+    <div class="flex gap-2">
         <p class="inline-block text-primary-800">{{ $date->format('Y-m-d') }}</p>
         <div class="my-auto inline-block bg-primary-300 h-px w-full"></div>
     </div>
