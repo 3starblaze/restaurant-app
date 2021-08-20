@@ -10,10 +10,6 @@
             <p class="inline">{{ $reservation->max_person_count }}</p>
         </div>
     </div>
-    <div class="my-auto">
-        <x-a href="{{ route('bookings.create', compact('reservation')) }}"
-             class="text-lg">
-            {{ __('Book') }} >
-        </x-a>
-    </div>
+    <x-arrow-button :href="route('bookings.create', compact('reservation'))"
+                    :text="__('Book')"/>
 </x-card>

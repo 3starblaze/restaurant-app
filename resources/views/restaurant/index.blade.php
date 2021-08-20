@@ -72,13 +72,8 @@
                                 @endfor
                             </div>
                         </div>
-                        <div class="flex align-center">
-                            <a href="{{ route('restaurant.show', compact('restaurant')) }}"
-                                 class="flex items-center text-primary-500">
-                                <p class="inline-block text-lg">View</p>
-                                <x-bare.chevron-right class="h-10 w-10" />
-                            </a>
-                        </div>
+                        <x-arrow-button :href="route('restaurant.show', compact('restaurant'))"
+                                        :text="__('View')" />
                     </div>
                 </div>
                 <p class="px-2 mb-2">{{ $restaurant->description }}</p>
