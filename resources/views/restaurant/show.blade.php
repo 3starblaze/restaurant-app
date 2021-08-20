@@ -1,6 +1,8 @@
 <x-app-layout>
-    <x-slot name="header">
-        <span class="text-primary-600 text-md">{{ __('Restaurant') }}</span> {{ $restaurant->name }}
+    <x-base class="my-3">
+        <p class="text-lg">
+            <span class="text-primary-600">{{ __('Restaurant') }}</span> {{ $restaurant->name }}
+        </p>
         @if ($restaurant->approved_at == null)
             <x-warning-icon :title="__('Your restaurant is not approved')" />
         @endif
@@ -26,50 +28,50 @@
                 @endif
             @endfor
         </div>
-    </x-slot>
+    </x-base>
 
-    <div class="flex flex-col lg:flex-row lg:gap-10">
-        <div class="flex flex-col sm:flex-row lg:flex-col">
-            <img src="/test-images/restaurants/00{{ rand(0, 5) }}.jpg"
-                 alt="restaurant"
-                 class="w-screen"/>
+    <x-base full-width>
+        <img src="/test-images/restaurants/00{{ rand(0, 5) }}.jpg"
+             alt="restaurant"
+             class="w-screen"/>
+    </x-base>
 
-            <p class="max-w-xl w-full sm:flex-1 lg:flex-none">{{ $restaurant->description }}</p>
+    <x-base>
+        <p class="max-w-xl w-full my-3">{{ $restaurant->description }}</p>
+    </x-base>
 
-            <div class="sm:flex-1">
-                <!-- Style attribute makes the map a perfect square -->
-                <x-map style="height:0;width:100%;padding-bottom:100%;"
-                       :lat="$restaurant->latitude"
-                       :lng="$restaurant->longitude"
-                       zoom="close">
-                    L.marker({
-                    lat: {{ $restaurant->latitude }},
-                    lng: {{ $restaurant->longitude }},
-                    }).addTo(map);
-                </x-map>
-            </div>
+    <x-base full-width>
+        <!-- Style attribute makes the map a perfect square -->
+        <x-map style="height:0;width:100%;padding-bottom:100%;"
+               :lat="$restaurant->latitude"
+               :lng="$restaurant->longitude"
+               zoom="close">
+            L.marker({
+            lat: {{ $restaurant->latitude }},
+            lng: {{ $restaurant->longitude }},
+            }).addTo(map);
+        </x-map>
+    </x-base>
 
-            <div>
-                <x-h2 class="mt-5 mb-3">{{ __('Gallery')}}</x-h2>
-                <div class="grid grid-rows-2 grid-cols-2 gap-2">
-                    @for ($i = 0; $i < 4; $i++)
-                        <img src="/test-images/restaurants/00{{ rand(0, 5) }}.jpg"
-                             alt="restaurant"
-                             class="rounded-md object-cover w-full h-full" />
-                    @endfor
-                </div>
-            </div>
+    <x-base>
+        <x-h2 class="mt-5 mb-3">{{ __('Gallery')}}</x-h2>
+        <div class="grid grid-rows-2 grid-cols-2 gap-2">
+            @for ($i = 0; $i < 4; $i++)
+                <img src="/test-images/restaurants/00{{ rand(0, 5) }}.jpg"
+                     alt="restaurant"
+                     class="rounded-md object-cover w-full h-full" />
+            @endfor
         </div>
-        <div class="flex-1">
-            <script type="text/javascript">
-             const calendarCallback = (info) => {
-                 console.log('calendar callback');
-                 console.log('date', info.start);
-             }
-            </script>
-            <x-h2 class="mt-5 mb-3">{{ __('Reservations') }}</x-h2>
-            <x-calendar class="border-t-8" />
-            <livewire:calendar-reservation :restaurant="$restaurant" />
-        </div>
-    </div>
+    </x-base>
+    <x-base class="">
+        <script type="text/javascript">
+         const calendarCallback = (info) => {
+             console.log('calendar callback');
+             console.log('date', info.start);
+         }
+        </script>
+        <x-h2 class="mt-5 mb-3">{{ __('Reservations') }}</x-h2>
+        <x-calendar class="border-t-8" />
+        <livewire:calendar-reservation :restaurant="$restaurant" />
+    </x-base>
 </x-app-layout>
