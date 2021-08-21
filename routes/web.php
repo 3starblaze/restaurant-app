@@ -55,14 +55,17 @@ Route::group([
     'prefix' => '/business/dashboard',
     'middleware' => 'auth',
 ], function () {
-    Route::get('/', function () {
-        return view('dashboard');
-    })->name('dashboard');
-
     Route::put('/', LocaleChangeController::class)->name('change-locale');
+
+    Route::get('/bookings', function() {
+        return view('dashboard.bookings');
+    })->name('dashboard.bookings');
 
     require __DIR__.'/user-auth.php';
 });
+
+Route::redirect('/business/dashboard', '/business/dashboard/bookings')
+    ->name('dashboard');
 
 Route::group([
     'prefix' => '/business/{locale}',
