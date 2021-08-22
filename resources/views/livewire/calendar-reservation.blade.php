@@ -9,12 +9,3 @@
                                      class="p-2 mt-3 w-full"/>
     @endforeach
 </div>
-<script type="text/javascript">
- document.addEventListener('livewire:load', function () {
-     // Get the value of the "count" property
-     var someValue = @this.date
-
-     // Run a callback when an event ("foo") is emitted from this component
-     @this.on('foo', () => {})
- })
-</script>

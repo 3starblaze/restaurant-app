@@ -3,6 +3,7 @@
 namespace App\Http\Livewire;
 
 use Livewire\Component;
+use Illuminate\Support\Carbon;
 
 class CalendarReservation extends Component
 {
@@ -23,7 +24,8 @@ class CalendarReservation extends Component
     }
 
     public function setDate($date) {
-        $this->date = new \Datetime($date);
+        // FIXME Hack for getting the right day
+        $this->date = (new Carbon($date))->addHours(3);
         $this->reservations = $this->restaurant->reservations->filter(
             function ($value, $key) {
                 return $value->start_time->format('Y-m-d')
