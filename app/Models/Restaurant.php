@@ -50,4 +50,9 @@ class Restaurant extends Model
     {
         return $this->hasMany(Reservation::class);
     }
+
+    public function bookings()
+    {
+        return $this->hasManyThrough(Booking::class, Reservation::class);
+    }
 }

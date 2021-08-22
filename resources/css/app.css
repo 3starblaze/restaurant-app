@@ -1,3 +1,31 @@
 @import 'tailwindcss/base';
 @import 'tailwindcss/components';
 @import 'tailwindcss/utilities';
+
+@layer base {
+    #calendar .fc-toolbar {
+        @apply p-2;
+        @apply mb-0;
+    }
+
+    #calendar .fc-toolbar-title {
+        @apply text-primary-500;
+    }
+
+    #calendar .fc-col-header-cell-cushion {
+        @apply text-primary-500;
+    }
+
+    #calendar .fc-scrollgrid-section-header {
+        @apply bg-primary-100;
+    }
+
+    #calendar .fc-button {
+        @apply bg-primary-500;
+        @apply border-primary-600;
+    }
+
+    #calendar .fc-highlight {
+        @apply bg-primary-100;
+    }
+}

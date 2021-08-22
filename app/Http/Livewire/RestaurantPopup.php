@@ -22,7 +22,7 @@ class RestaurantPopup extends Component
     }
 
     public function setRestaurant(Restaurant $restaurant) {
-        $this->currentRestaurant = $restaurant->only(['name', 'description', 'uuid']);
+        $this->currentRestaurant = $restaurant;
         $this->showRoute = route('restaurant.show', compact('restaurant'));
     }
 }

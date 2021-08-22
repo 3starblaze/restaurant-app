@@ -1,8 +1,4 @@
 <x-app-layout>
-    <x-slot name="header">
-        {{ __('Restaurants') }}
-    </x-slot>
-
     <script type="text/javascript">
      let markers = [];
      let restaurantUuids = [];
@@ -27,9 +23,8 @@
      }
     </script>
 
-
-    <div class="flex flex-col relative">
-        <x-map>
+    <x-base full-width class="flex flex-col relative">
+        <x-map class="border-primary-200 border-2">
             var m;
             @foreach ($restaurants as $restaurant)
                 m = L.marker({
@@ -45,21 +40,17 @@
             @endforeach
         </x-map>
         <livewire:restaurant-popup />
-    </div>
+    </x-base>
 
+    <x-base>
+        <x-h2>{{ __('Restaurants') }}</x-h2>
+    </x-base>
 
-    <hr class="mt-5 mb-8" />
-
-    @forelse ($restaurants as $restaurant)
-        <div class="ml-5 mt-5 max-w-xl">
-            <h2 class="font-bold">
-                <x-a href="{{ route('restaurant.show', compact('restaurant')) }}">
-                    {{ $restaurant->name }}
-                </x-a>
-            </h2>
-            <p>{{ $restaurant->description }}</p>
-        </div>
-    @empty
-        <p>No restaurants yet.</p>
-    @endforelse
+    <x-base class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-2">
+        @forelse ($restaurants as $restaurant)
+            <x-restaurant.index-card :restaurant="$restaurant" />
+        @empty
+            <p>No restaurants yet.</p>
+        @endforelse
+    </x-base>
 </x-app-layout>

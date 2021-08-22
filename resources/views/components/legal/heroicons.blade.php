@@ -5,6 +5,8 @@
     <x-bare.warning-icon class="inline h-5 w-5" title="" />
     <x-bare.close-button class="inline h-5 w-5" />
     <x-bare.user-icon class="inline h-5 w-5" />
+    <x-bare.star-icon class="inline h-5 w-5" />
+    <x-bare.chevron-right class="inline h-5 w-5" />
     )
 </p>
 
