@@ -14,11 +14,31 @@
         </div>
         <div class="w-40 pl-2 bg-white">
             <ul>
-                <li class="my-2">Bookings</li>
-                <li class="my-2">Reservations</li>
-                <li class="my-2">Billing</li>
-                <li class="my-2">Settings</li>
-                <li class="my-2 pt-2 border-t border-primary-200">Support</li>
+                <li class="my-2">
+                    <x-a :href="route('dashboard.bookings')">
+                        Bookings
+                    </x-a>
+                </li>
+                <li class="my-2">
+                    <x-a :href="route('dashboard.reservations')">
+                        Reservations
+                    </x-a>
+                </li>
+                <li class="my-2">
+                    <x-a href="#">
+                        Billing
+                    </x-a>
+                </li>
+                <li class="my-2">
+                    <x-a href="#">
+                        Settings
+                    </x-a>
+                </li>
+                <li class="my-2 pt-2 border-t border-primary-200">
+                    <x-a href="#">
+                        Support
+                    </x-a>
+                </li>
             </ul>
         </div>
         <div class="bg-white p-2">
