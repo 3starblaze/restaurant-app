@@ -1,6 +1,6 @@
 <x-app-layout>
     <x-base class="my-3">
-        <p class="text-lg">
+        <p class="text-2xl">
             <span class="text-primary-600">{{ __('Restaurant') }}</span> {{ $restaurant->name }}
         </p>
         @if ($restaurant->approved_at == null)
