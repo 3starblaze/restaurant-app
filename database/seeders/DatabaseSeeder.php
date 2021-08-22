@@ -26,7 +26,7 @@ class DatabaseSeeder extends Seeder
                 'password' => Hash::make('admin'),
             ]);
 
-            Restaurant::factory()->hasReservations(10)->create([
+            Restaurant::factory()->hasReservations(100)->create([
                 'user_id' => $adminUser,
                 'name' => 'Adminifoods',
             ]);

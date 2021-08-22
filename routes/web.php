@@ -5,6 +5,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\RestaurantController;
 use App\Http\Controllers\LocaleChangeController;
 use App\Http\Controllers\ReservationController;
+use App\Http\Controllers\DashboardController;
 
 /*
 |--------------------------------------------------------------------------
@@ -60,6 +61,9 @@ Route::group([
     Route::get('/bookings', function() {
         return view('dashboard.bookings');
     })->name('dashboard.bookings');
+
+    Route::get('/reservations', [DashboardController::class, 'reservations'])
+        ->name('dashboard.reservations');
 
     require __DIR__.'/user-auth.php';
 });
