@@ -27,7 +27,6 @@
         </div>
     </div>
     <p class="px-2 mb-2">{{ $restaurant->description }}</p>
-    <img src="/test-images/restaurants/00{{ rand(0, 5) }}.jpg"
-         alt="restaurant"
-         class="rounded-b" />
+
+    <x-fake.restaurant-img class="rounded-b" />
 </x-card>

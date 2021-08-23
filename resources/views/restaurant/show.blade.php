@@ -31,9 +31,7 @@
     </x-base>
 
     <x-base full-width>
-        <img src="/test-images/restaurants/00{{ rand(0, 5) }}.jpg"
-             alt="restaurant"
-             class="w-screen"/>
+        <x-fake.restaurant-img class="w-screen" />
     </x-base>
 
     <x-base>
@@ -57,9 +55,7 @@
         <x-h2>{{ __('Gallery')}}</x-h2>
         <div class="grid grid-rows-2 grid-cols-2 gap-2">
             @for ($i = 0; $i < 4; $i++)
-                <img src="/test-images/restaurants/00{{ rand(0, 5) }}.jpg"
-                     alt="restaurant"
-                     class="rounded-md object-cover w-full h-full" />
+                <x-fake.restaurant-img class="rounded-md object-cover w-full h-full" />
             @endfor
         </div>
     </x-base>
