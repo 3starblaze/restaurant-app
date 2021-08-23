@@ -5,22 +5,7 @@
                 <h2 class="font-bold text-lg">
                     {{ $restaurant->name }}
                 </h2>
-                <!-- Flex for removing implicit whitespace -->
-                <!-- Shift div for finer alignment -->
-                <div class="flex relative -left-0.5">
-                    @php
-                    $starCount = rand(1, 5);
-                    @endphp
-                    @for ($i = 1; $i <= 5; $i++)
-                        @if ($i <= $starCount)
-                            <x-bare.star-icon
-                                class="h-5 inline-block text-yellow-500" />
-                        @else
-                            <x-bare.star-icon
-                                class="h-5 inline-block text-yellow-200" />
-                        @endif
-                    @endfor
-                </div>
+                <x-stars :starCount="rand(1, 5)" />
             </div>
             <x-arrow-button :href="route('restaurant.show', compact('restaurant'))"
                             :text="__('View')" />
