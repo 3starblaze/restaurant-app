@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Models\Restaurant;
 
 class DashboardController extends Controller
 {
@@ -13,5 +14,15 @@ class DashboardController extends Controller
         });
 
         return view('dashboard.reservations', compact('groups'));
+    }
+
+    public function settings() {
+        $restaurant = \Auth::user()->restaurant;
+        $currentPlace = rand(1, 5);
+        $totalPlaces = Restaurant::count();
+
+        return view('dashboard.settings', compact(
+            'restaurant', 'currentPlace', 'totalPlaces'
+        ));
     }
 }

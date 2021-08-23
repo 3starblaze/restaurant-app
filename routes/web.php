@@ -65,6 +65,9 @@ Route::group([
     Route::get('/reservations', [DashboardController::class, 'reservations'])
         ->name('dashboard.reservations');
 
+    Route::get('/settings', [DashboardController::class, 'settings'])
+        ->name('dashboard.settings');
+
     require __DIR__.'/user-auth.php';
 });
 
