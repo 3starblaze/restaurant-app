@@ -6,12 +6,7 @@
     </x-a>
 
     @foreach($groups as $date => $group)
-        <div class="flex gap-2">
-            <p class="inline-block text-primary-800">
-                {{ $date }}
-            </p>
-            <div class="my-auto inline-block bg-primary-300 h-px w-full"></div>
-        </div>
+        <x-text-divider>{{ $date }}</x-text-divider>
 
         <div class="grid grid-cols-4 gap-2 mb-5">
             @foreach($group as $reservation)
