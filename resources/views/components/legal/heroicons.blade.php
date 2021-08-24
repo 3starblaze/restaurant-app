@@ -7,6 +7,7 @@
     <x-bare.user-icon class="inline h-5 w-5" />
     <x-bare.star-icon class="inline h-5 w-5" />
     <x-bare.chevron-right class="inline h-5 w-5" />
+    <x-bare.cog class="inline h-5 w-5" />
     )
 </p>
 

@@ -30,7 +30,7 @@
                     </x-a>
                 </li>
                 <li class="my-2">
-                    <x-a href="#">
+                    <x-a :href="route('dashboard.settings')">
                         Settings
                     </x-a>
                 </li>
