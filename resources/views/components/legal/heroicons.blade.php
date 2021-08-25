@@ -8,6 +8,11 @@
     <x-bare.star-icon class="inline h-5 w-5" />
     <x-bare.chevron-right class="inline h-5 w-5" />
     <x-bare.cog class="inline h-5 w-5" />
+    <x-bare.outline.clipboard-list class="inline h-6 w-6" />
+    <x-bare.outline.cog class="inline h-6 w-6" />
+    <x-bare.outline.credit-card class="inline h-6 w-6" />
+    <x-bare.outline.question-mark-circle class="inline h-6 w-6" />
+    <x-bare.outline.user-add class="inline h-6 w-6" />
     )
 </p>
 

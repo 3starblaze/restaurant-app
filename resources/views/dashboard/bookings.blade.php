@@ -1,5 +1,5 @@
 <x-dashboard-layout>
-    <h1 class="text-xl text-gray-900 font-bold">Your bookings</h1>
+    <h1 class="mt-3 text-xl text-gray-900 font-bold">Your bookings</h1>
     <div class="grid grid-cols-3 gap-2">
         <div class="flex flex-col">
             <x-h2 class="bg-yellow-200 p-2 rounded-md">Pending</x-h2>
