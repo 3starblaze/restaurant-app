@@ -12,6 +12,7 @@ module.exports = {
         extend: {
             colors: {
                 primary: colors.blue,
+                blue: colors.sky,
             },
             fontFamily: {
                 sans: ['Nunito', ...defaultTheme.fontFamily.sans],

@@ -3,7 +3,7 @@
        'text-gray-800',
        'underline',
        'inline-block', // To trim extra whitespace around the link
-       'hover:text-primary-500',
+       'hover:text-blue-500',
       ])]) }}>
     {{ $slot }}
 </a>
