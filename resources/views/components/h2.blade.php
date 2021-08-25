@@ -3,7 +3,7 @@
        'mb-3',
        'font-bold',
        'text-lg',
-       'text-primary-500',
+       'text-gray-900',
        'leading-tight',
        ])]) }}>
     {{ $slot }}

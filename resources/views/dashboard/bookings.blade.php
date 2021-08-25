@@ -1,8 +1,8 @@
 <x-dashboard-layout>
-    <h1 class="text-xl text-primary-500 font-bold">Your bookings</h1>
+    <h1 class="text-xl text-gray-900 font-bold">Your bookings</h1>
     <div class="grid grid-cols-3 gap-2">
         <div class="flex flex-col">
-            <x-h2>Pending</x-h2>
+            <x-h2 class="bg-yellow-200 p-2 rounded-md">Pending</x-h2>
             @foreach(Auth::user()->restaurant->bookings as $booking)
                 <x-card class="p-2 mb-2 flex justify-between">
                     <div>
@@ -15,7 +15,7 @@
             @endforeach
         </div>
         <div class="flex flex-col">
-            <x-h2>Accepted</x-h2>
+            <x-h2 class="bg-green-200 p-2 rounded-md">Accepted</x-h2>
             @foreach(Auth::user()->restaurant->bookings as $booking)
                 <x-card class="p-2 mb-2 flex justify-between">
                     <div>
@@ -28,7 +28,7 @@
             @endforeach
         </div>
         <div class="flex flex-col">
-            <x-h2>Missed</x-h2>
+            <x-h2 class="bg-red-200 p-2 rounded-md">Missed</x-h2>
             @foreach(Auth::user()->restaurant->bookings as $booking)
                 <x-card class="p-2 mb-2">
                     <div>
